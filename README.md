@@ -30,7 +30,7 @@ Skills bridge the gap between MCP tools (which use JSON-RPC over HTTP) and agent
 MCP servers expose tools via the `tools/list` JSON-RPC method (POST to the MCP server URL). Each tool has:
 
 - `name` → Skill name
-- `description` → Skill description  
+- `description` → Skill description
 - `inputSchema` → Skill parameters (JSON Schema)
 
 The generator fetches this list, maps each tool to the skill schema format, and writes:
@@ -244,6 +244,17 @@ See `examples/agent_usage.py` for a complete example.
 | `octoparse_create_task_from_template` | Create task from template |
 | ... | 12 more Octoparse skills |
 
+### Octoparse Workflow Skills
+
+Additional workflow-oriented skills for Claude Code that orchestrate multiple MCP tools:
+
+| Skill | Description | Triggers |
+|-------|-------------|----------|
+| [octoparse-template-task](skills/octoparse-template-task/Skill.md) | Create tasks using pre-defined templates | "create a scraper", "use template" |
+| [octoparse-task-management](skills/octoparse-task-management/Skill.md) | Find tasks, view configuration, organize by groups | "find task", "show my tasks" |
+| [octoparse-task-control](skills/octoparse-task-control/Skill.md) | Start/stop tasks and monitor execution status | "start task", "stop task" |
+| [octoparse-data-export](skills/octoparse-data-export/Skill.md) | Export scraped data with pagination | "get data", "export results" |
+
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
@@ -251,6 +262,3 @@ MIT License - see [LICENSE](LICENSE) for details.
 ## Contributing
 
 Contributions welcome! Please open an issue or PR on GitHub.
-=======
-Collection of Octoparse agent skills
->>>>>>> 79b1ec290165b9e3e9398baa103d132da3f625c4
