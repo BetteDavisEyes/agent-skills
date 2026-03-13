@@ -1,0 +1,28 @@
+{
+  "name": "crawl_page",
+  "description": "Crawls a web page and returns its HTML content. Use this skill when you need to fetch the raw HTML of a URL for further processing, analysis, or extraction. Supports custom headers and timeout configuration.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "The URL of the web page to crawl. Must be a valid HTTP or HTTPS URL."
+      },
+      "timeout": {
+        "type": "integer",
+        "description": "Request timeout in seconds. Default is 30.",
+        "default": 30
+      },
+      "headers": {
+        "type": "object",
+        "description": "Optional custom HTTP headers to send with the request (e.g., User-Agent)."
+      }
+    },
+    "required": ["url"],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "http",
+    "endpoint": "https://mcp.octoparse.com"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "url": "https://example.com/spa-app",
+  "wait_selector": ".content-loaded",
+  "wait_time": 2000
+}

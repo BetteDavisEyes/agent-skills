@@ -1,0 +1,53 @@
+{
+  "name": "octoparse_search_user_task_list",
+  "description": "Searches the user's task list with flexible filtering options including keyword, group, status, and pagination. This is the primary tool for finding tasks.\n\n[When to use]:\n- MUST call when user says \"show my tasks\", \"find tasks\", \"list all tasks\", \"search for task X\"\n- MUST call when user references a task by name but you don't have the ID (e.g., \"start my Amazon scraper\")\n- Call when user wants to filter tasks by group, status, or keyword\n- Call when user wants to browse their tasks\n\n[When NOT to use]:\n- DO NOT call if you already have the task ID and want details (use getTaskInfoById)\n- DO NOT call if user only wants execution status for known task IDs (use getTaskStatus)\n- DO NOT call if user wants to create a task (use createTemplateTask)\n\n[Parameter Guidelines]:\n- keyWord (optional): Searches task names and descriptions. Case-insensitive. Leave empty to get all tasks.\n- taskGroup (optional): Filter by specific task group/folder. Get group ID from getTaskGroups first.\n- status (optional): Filter by execution status (e.g., \"Running\", \"Stopped\", \"Completed\").\n- taskIds (optional): Fetch specific tasks by ID. More efficient than searching by keyword if you have IDs.\n- pageIndex (optional, default: 1): Page number (1-based). Start with page 1.\n- pageSize (optional, default: 20, max: 100): Number of tasks per page.\n\n[Pagination Best Practices]:\n- For first search: Use default pagination or pageSize=50\n- Don't automatically fetch all pages - wait for user confirmation\n- If user says \"show all\", loop through pages\n\n[Examples]:\nUser: \"Show my tasks\"\n-> search_user_task_list()\n\nUser: \"Find my Amazon tasks\"\n-> search_user_task_list(keyWord: \"Amazon\")\n\nUser: \"Show me running tasks\"\n-> search_user_task_list(status: \"Running\")\n\nUser: \"What's task 123 doing?\"\n-> DO NOT call this tool, use getTaskStatus([\"123\"]) instead",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "taskGroup": {
+        "type": "string",
+        "description": "OPTIONAL: Task group ID to filter by. Get group IDs from getTaskGroups(). Leave empty to search all groups."
+      },
+      "pageIndex": {
+        "type": "integer",
+        "minimum": 1,
+        "description": "OPTIONAL: Page number (1-based). Default is 1. BEST PRACTICE: Start with page 1, ask user before fetching more."
+      },
+      "pageSize": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 100,
+        "description": "OPTIONAL: Number of tasks per page. Default is 20, maximum is 100. Use 50-100 for \"show all tasks\" requests."
+      },
+      "keyWord": {
+        "type": "string",
+        "description": "OPTIONAL: Keyword to search in task names and descriptions. Case-insensitive. Leave empty to get all tasks."
+      },
+      "status": {
+        "type": "string",
+        "description": "OPTIONAL: Filter by task execution status. Common values: \"Running\", \"Stopped\", \"Completed\", \"Failed\"."
+      },
+      "taskIds": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "OPTIONAL: Array of specific task IDs to fetch. More efficient than keyword search if you have IDs."
+      }
+    },
+    "required": [],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "mcp",
+    "server": "user-octoparse",
+    "tool": "search_user_task_list",
+    "endpoint": "https://mcp.octoparse.com",
+    "endpoints": {
+      "international": "https://mcp.octoparse.com",
+      "china": "https://mcp.bazhuayu.com"
+    },
+    "defaultRegion": "international",
+    "regionEnv": "OCTOPARSE_MCP_REGION"
+  }
+}

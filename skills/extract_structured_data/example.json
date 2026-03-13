@@ -1,0 +1,8 @@
+{
+  "url": "https://example.com/product/123",
+  "selectors": {
+    "title": "h1.product-title",
+    "price": ".price",
+    "description": ".product-description"
+  }
+}

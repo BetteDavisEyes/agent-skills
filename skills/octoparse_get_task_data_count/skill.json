@@ -1,0 +1,37 @@
+{
+  "name": "octoparse_get_task_data_count",
+  "description": "Retrieves the total count of collected data for a specific task. Use this to check how much data has been scraped without downloading all the data.\n\n[When to use]:\n- MUST call when user asks \"how much data\", \"how many records\", \"data count\", \"how many rows\"\n- Call when user wants to check data volume before exporting\n- Call when user wants to monitor scraping progress (how much data collected so far)\n- Call when user wants to verify if task has collected any data\n- Call to check if there's new data to export (use includeExported=false)\n\n[When NOT to use]:\n- DO NOT call if user wants the actual data (use export_task_scraped_data instead)\n- DO NOT call if user wants task execution status (use get_task_execution_status instead)\n- DO NOT call if user wants task configuration details (use get_task_detailed_info instead)\n\n[Critical Parameters]:\n- taskId (REQUIRED): The task ID to check data count for. User must provide this.\n- includeExported (OPTIONAL, default: true): Controls which data to count\n  * true = Count ALL data (both exported and not-exported) - Total data collected by task\n  * false = Count ONLY not-exported data - New data available for export\n\n[Understanding includeExported]:\nWhen includeExported=true (default):\n  - Returns TOTAL count of all data ever collected by this task\n  - Use when user asks: \"How much data in total?\", \"Total records\", \"All data count\"\n\nWhen includeExported=false:\n  - Returns count of ONLY new/unexported data\n  - Use when user asks: \"How much new data?\", \"Unexported records\", \"Data ready to export\"\n  - This is data that hasn't been marked as exported yet\n\n[What You Get]:\n- total: Total number of data records matching the filter\n- offset: Current offset (always 1 in this tool)\n- restTotal: Remaining records after offset\n- fileIds: Sample file IDs (only first file, used for verification)\n\n[Self-Correction Scenarios]:\n\nScenario 1: Task doesn't exist\nIf API returns error \"task not found\" or similar:\n- Return structured error with taskId\n- Suggest: \"Verify task ID is correct. Use search_user_task_list to find the correct task ID.\"\n- Mark as recoverable\n\nScenario 2: Task has no data\nIf total=0:\n- This is NOT an error, just means no data collected yet\n- Return normal response: {total: 0, message: \"Task has not collected any data yet\"}\n- If task status is \"Running\", note: \"Task is running but hasn't collected data yet\"\n- If task status is \"Stopped\" or \"Unexecuted\", note: \"Task hasn't been run or collected no data\"\n\nScenario 3: Permission denied\nIf API returns permission error:\n- Return structured error\n- Suggest: \"You may not have permission to access this task. Verify the task belongs to your account.\"\n- Mark as non-recoverable\n\n[Examples]:\n\nExample 1: Check total data count\nUser: \"How much data does task abc123 have?\"\n-> get_task_data_count(taskId: \"abc123\", includeExported: true)\nResponse: \"Task abc123 has collected 1,543 total records.\"\n\nExample 2: Check unexported data count\nUser: \"How much new data is available to export for task xyz789?\"\n-> get_task_data_count(taskId: \"xyz789\", includeExported: false)\nResponse: \"Task xyz789 has 234 new records ready to export.\"\n\nExample 3: Before exporting, check if there's data\nUser: \"Check if my Amazon scraper has any new data\"\n-> 1. search_user_task_list(keyWord: \"Amazon\")\n-> 2. get_task_data_count(taskId: <found_id>, includeExported: false)\n-> If count > 0: \"Your Amazon scraper has 523 new records ready to export.\"\n-> If count = 0: \"No new data to export. All data has been exported already.\"\n\nExample 4: Task with no data (self-correction)\nUser: \"How much data in task 456?\"\n-> get_task_data_count(taskId: \"456\", includeExported: true)\n-> API returns: total=0\nResponse: \"Task 456 has not collected any data yet. Would you like to start the task to begin collecting data?\"\n\nExample 5: Invalid task ID (self-correction)\nUser: \"Check data count for task invalid-id\"\n-> get_task_data_count(taskId: \"invalid-id\", includeExported: true)\n-> API returns: 404 or task not found error\nResponse: \"⚠️ Task 'invalid-id' was not found. Please verify the task ID is correct. You can use search_user_task_list to find your tasks and their IDs.\"\n\nExample 6: Compare exported vs unexported\nUser: \"How much data total and how much is new for task 789?\"\n-> 1. get_task_data_count(taskId: \"789\", includeExported: true) // Get total\n-> 2. get_task_data_count(taskId: \"789\", includeExported: false) // Get unexported\nResponse: \"Task 789 has 2,000 total records, of which 500 are new (not yet exported).\"\n\n[Common User Questions and Responses]:\n\nQ: \"How many records in my task?\"\nA: Call with includeExported=true (default) to get total count\n\nQ: \"Is there new data to export?\"\nA: Call with includeExported=false to get unexported count\n\nQ: \"How much data has this task collected so far?\"\nA: Call with includeExported=true to get total count\n\nQ: \"Should I export my task data?\"\nA: Call with includeExported=false first. If count > 0, suggest exporting.\n\n[Integration with Other Tools]:\n\nBefore export_task_scraped_data:\n-> get_task_data_count (check if there's data to export)\n-> If count > 0: proceed with export\n-> If count = 0: inform user there's no new data\n\nAfter start_cloud_task_execution:\n-> Wait for task to run for a while\n-> get_task_data_count (monitor progress)\n-> Show user how much data has been collected\n\nBefore clear_task_collected_data:\n-> get_task_data_count with includeExported=true\n-> Show user how much data will be deleted\n-> Ask for confirmation",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "taskId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "pattern": "^[a-zA-Z0-9_-]+$",
+        "description": "REQUIRED: The task ID to check data count for. Must be a valid existing task. User must provide this parameter."
+      },
+      "includeExported": {
+        "type": "boolean",
+        "default": true,
+        "description": "OPTIONAL: Whether to include exported data in the count. Default is true (count all data). Set to false to count only unexported/new data. Use true when user asks about \"total data\" or \"all data\", use false when user asks about \"new data\" or \"unexported data\"."
+      }
+    },
+    "required": [
+      "taskId"
+    ],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "mcp",
+    "server": "user-octoparse",
+    "tool": "get_task_data_count",
+    "endpoint": "https://mcp.octoparse.com",
+    "endpoints": {
+      "international": "https://mcp.octoparse.com",
+      "china": "https://mcp.bazhuayu.com"
+    },
+    "defaultRegion": "international",
+    "regionEnv": "OCTOPARSE_MCP_REGION"
+  }
+}

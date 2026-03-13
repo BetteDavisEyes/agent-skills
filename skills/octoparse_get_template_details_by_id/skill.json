@@ -1,0 +1,30 @@
+{
+  "name": "octoparse_get_template_details_by_id",
+  "description": "Retrieves comprehensive details of a specific Octoparse template by its numeric ID, including version information, user permissions, and runtime requirements.\n\n[CRITICAL - Best Practices]:\n- The \"prompts\" field contains high-level template instructions.\n- Individual parameters in the \"parameters\" field also contain embedded \"Instruction\" text (originally from the Remark field).\n- You MUST follow ALL these instructions to ensure correct configuration. Think of these as the template's manual.\n- Note: The \"Remark\" field itself is hidden from output, but its content is preserved in parameter descriptions.\n\n[When to use]:\n- MUST call when you have a template ID (from searchTemplates result) and need detailed information\n- MUST call BEFORE createTemplateTask to verify template requirements and parameters\n- Call when user asks \"show me details of template X\" where X is a number\n- Call to check template's runOn property before attempting to start a cloud task\n\n[When NOT to use]:\n- DO NOT call if you have a slug instead of an ID (use getTemplateBySlug instead)\n- DO NOT call if you're searching for templates (use searchTemplates instead)\n- DO NOT call repeatedly for the same template ID in one conversation - cache the result\n\n[CRITICAL - Template Compatibility Check]:\n- Always check the \"runOn\" field: 1=Local only, 2=Cloud only, 3=Both\n- If runOn=1, user CANNOT use startCloudTask and must use Octoparse desktop client\n- Check \"accountLimit\" against user's account level (from getUserInfo)\n- Check \"minClientVersion\" if user is running locally\n\n[Examples]:\nUser: \"Show me details of template 12345\"\n-> Call get_template_details_by_id(templateId: 12345)\n\nUser: \"Can I run template 789 on cloud?\"\n-> First call get_template_details_by_id(templateId: 789), then check runOn field\n\nUser: \"Find LinkedIn templates\"\n-> DO NOT call this tool, call searchTemplates(keyword: \"LinkedIn\") instead",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "templateId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "description": "The numeric ID of the template to query. This should come from searchTemplates results. IMPORTANT: Must be a positive integer, NOT a string or slug."
+      }
+    },
+    "required": [
+      "templateId"
+    ],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "mcp",
+    "server": "user-octoparse",
+    "tool": "get_template_details_by_id",
+    "endpoint": "https://mcp.octoparse.com",
+    "endpoints": {
+      "international": "https://mcp.octoparse.com",
+      "china": "https://mcp.bazhuayu.com"
+    },
+    "defaultRegion": "international",
+    "regionEnv": "OCTOPARSE_MCP_REGION"
+  }
+}

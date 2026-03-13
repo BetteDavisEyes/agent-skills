@@ -1,0 +1,22 @@
+{
+  "name": "octoparse_get_user_account_info",
+  "description": "Retrieves comprehensive account information for the authenticated Octoparse user, including account level, subscription status, balances, and binding accounts.\n\n[When to use]:\n- MUST call when user asks \"who am I\", \"my account\", \"my info\", \"my subscription\", \"my balance\"\n- Call as the FIRST step when user needs to verify their authentication status\n- Call when user asks about account limits, permissions, or subscription details\n- Call before operations that depend on account level (e.g., checking if user can create template tasks)\n\n[When NOT to use]:\n- DO NOT call repeatedly in the same conversation - cache the result\n- DO NOT call if user is asking about task information (use getTaskInfoById instead)\n- DO NOT call if user is asking about templates (use searchTemplates instead)\n\n[Important Notes]:\n- This tool requires authentication. If user is not authenticated, guide them to authenticate first.\n- Account information includes sensitive data (masked email, balance) - handle with care\n- The account level determines user permissions: Free(1), Basic(9), Standard(2), Professional(3), Enterprise(31), Enterprise Plus(4)\n- If subscribe=false, subscription fields (packageKey, nextBillingDate) will be empty\n\n[Key Field Descriptions]:\n- googleAccount: Bound Google Account - Email address of the bound Google account\n- microsoftAccount: Bound Microsoft Account - Email address of the bound Microsoft account\n- appleAccount: Apple Account - Email address of the bound Apple account\n- accountLevel: Account Level - Raw account level without validity check (1:Free;9:Basic;2:Standard;3:Professional;31:Enterprise;4:Enterprise Plus;110:Personal;120:Group;130:Business;140:BusinessMember)\n- currentAccountLevel: Current Account Level - Current account level with validity check, shows Free if expired (1:Free;9:Basic;2:Standard;3:Professional;31:Enterprise;4:Enterprise Plus;110:Personal;120:Group;130:Business;140:BusinessMember)\n- levelEffectivePeriod: Level Effective Period - Expiration date of the account level\n- nextBillingDate: Next Billing Date - Next subscription billing date (OP specific)\n- packageKey: Package Key - Unique identifier key for subscription package (OP specific)\n- isAutoRenewal: Is Auto Renewal - Whether auto-renewal is enabled\n- speedTaskCount: Speed Task Count - Number of speed tasks available to user\n- cloudNodeCount: Cloud Node Count - Number of cloud nodes available to user\n- cloudExtraCount: Cloud Extra Count - Number of extra nodes purchased by user\n- businessMemberCount: Business Member Count - Number of business member accounts\n- isTrial: Is Trial - Whether user account is in trial mode\n- language: Language - User's selected interface language\n\n[Examples]:\nUser: \"What's my account level?\"\n-> Call get_user_account_info()\n\nUser: \"How much balance do I have?\"\n-> Call get_user_account_info()\n\nUser: \"Show me my tasks\"\n-> DO NOT call this tool, call getTaskGroups or searchTaskList instead",
+  "parameters": {
+    "type": "object",
+    "properties": {},
+    "required": [],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "mcp",
+    "server": "user-octoparse",
+    "tool": "get_user_account_info",
+    "endpoint": "https://mcp.octoparse.com",
+    "endpoints": {
+      "international": "https://mcp.octoparse.com",
+      "china": "https://mcp.bazhuayu.com"
+    },
+    "defaultRegion": "international",
+    "regionEnv": "OCTOPARSE_MCP_REGION"
+  }
+}

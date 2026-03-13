@@ -1,0 +1,111 @@
+{
+  "name": "octoparse_create_task_from_template",
+  "description": "Creates a new scraping task based on an Octoparse template. This is the primary way to set up a new data extraction job.\n\n[When to use]:\n- MUST call when user says \"create a task\", \"set up a scraper\", \"use template X to scrape Y\"\n- Call after user has selected a template (from searchTemplates) and wants to instantiate it\n- Call when user wants to start scraping with a specific template\n\n[CRITICAL - Prerequisites]:\nBefore calling this tool, you MUST:\n1. Call getTemplateView(templateId) to get template details and required parameters\n2. Call getUserInfo() to verify user's account level meets template's accountLimit\n3. Call getTaskGroups() if user wants to specify a task group (optional but recommended for organization)\n\n[When NOT to use]:\n- DO NOT call if user wants to modify an existing task (use updateTemplateTask instead)\n- DO NOT call if you don't have a valid templateId (search first with searchTemplates)\n- DO NOT call if user's account level is insufficient (check accountLimit from getTemplateView)\n\n[Parameter Guidelines]:\n- templateId (REQUIRED): Must be a valid template ID from searchTemplates or getTemplateView\n- taskName (optional): If not provided, system will auto-generate. BEST PRACTICE: Always ask user for a descriptive name\n- taskGroupId (optional): If not provided, task goes to default group. RECOMMEND: Ask user or use result from getTaskGroups\n- userInputParameters (REQUIRED): Complex parameter object for template customization. This is MANDATORY for all templates.\n\n[CRITICAL - userInputParameters Structure]:\nThe userInputParameters field is REQUIRED and must contain BOTH UIParameters and TemplateParameters arrays.\n\n**UIParameters** (REQUIRED):\n- Purpose: UI-level parameters for displaying in Octoparse Desktop client\n- Format: Array of objects with structure: [{Id: \"param_id\", Value: \"param_value\"}]\n- Each parameter MUST have: Id (string) - parameter identifier from template schema\n- Each parameter MAY have: Value (any) - the parameter value\n- Example: [{Id: \"d8e977c5-05f8-99af-9a71-925db964e9f1\", Value: [\"keyword1\", \"keyword2\"]}]\n\n**TemplateParameters** (REQUIRED):\n- Purpose: Template-level parameters for actual scraping execution\n- Format: Array of objects with structure: [{ParamName: \"param_name\", Value: \"param_value\"}]\n- Each parameter MUST have: ParamName (string) - parameter name from template\n- Each parameter MAY have: Value (any) - the parameter value\n- Example: [{ParamName: \"MainKeys\", Value: [\"keyword1\", \"keyword2\"]}]\n\n**CRITICAL - Parameter Pairing Rule**:\nEvery parameter MUST appear in BOTH UIParameters and TemplateParameters arrays:\n- If a parameter exists in UIParameters (by Id), it MUST also exist in TemplateParameters (by ParamName)\n- If a parameter exists in TemplateParameters (by ParamName), it MUST also exist in UIParameters (by Id)\n- UIParameters use Id for identification, TemplateParameters use ParamName\n- Both arrays must contain the same parameters, just with different key names\n- Example pairing:\n  UIParameters: [{Id: \"abc-123\", Value: \"test\"}]\n  TemplateParameters: [{ParamName: \"SearchKeyword\", Value: \"test\"}]\n  These represent the SAME parameter - one for UI display, one for execution\n\n**How to Get Parameter Structure**:\n1. Call getTemplateView(templateId) to get template details\n2. Look for the 'parameters' or 'prompts' field in the response.\n3. CRITICAL: The 'prompts' field contains the instruction manual and best practices for this template. You MUST follow its guidance when configuring parameters.\n4. Use the parameter definitions to construct both UIParameters and TemplateParameters\n5. Ensure every parameter appears in both arrays with correct values\n\n**Character Limit Validation**:\nMinLen and MaxLen validation is automatically handled if not explicitly defined in the template:\n- If MinLen is null/undefined: Default to 1 if IsRequired=true, else 0.\n- If MaxLen is null/undefined: Default to 999999.\n\n**CRITICAL - Parameter Value Types Based on ControlType**:\nThe ControlType field in template parameters determines the expected Value format:\n\n- **ControlType=\"MultiInput\"**: Value MUST be an ARRAY\n  * Used for parameters that accept multiple inputs (e.g., multiple keywords, multiple URLs)\n  * Example: {Id: \"param-id\", Value: [\"keyword1\", \"keyword2\", \"keyword3\"]}\n  * ❌ WRONG: {Id: \"param-id\", Value: \"keyword1\"} // Single string will cause errors\n  * ✅ CORRECT: {Id: \"param-id\", Value: [\"keyword1\"]} // Array with one element\n  * Even for single values, wrap in array: Value: [\"single_value\"]\n\n- **ControlType=\"TextInput\"** or **\"SingleInput\"**: Value should be a STRING\n  * Example: {Id: \"param-id\", Value: \"single_keyword\"}\n\n- **ControlType=\"NumberInput\"**: Value should be a NUMBER\n  * Example: {Id: \"param-id\", Value: 100}\n\n- **ControlType=\"Checkbox\"**: Value should be a BOOLEAN\n  * Example: {Id: \"param-id\", Value: true}\n\n**IMPORTANT**: Check the template's parameter definitions to identify ControlType before constructing values. MultiInput is the most common mistake - forgetting to wrap values in an array will cause task creation to fail.\n\n**Error Messages You Might See**:\n- \"UIParameters is required. Please provide an array of UI parameters with required fields: [{Id: \"some_id\", Value: \"some_value\"}]\"\n  -> You forgot to include UIParameters or it's empty\n- \"TemplateParameters is required. Please provide an array of template parameters with required fields: [{ParamName: \"param_name\", Value: \"param_value\"}]\"\n  -> You forgot to include TemplateParameters or it's empty\n- Parameter mismatch error\n  -> Parameters in UIParameters don't match those in TemplateParameters (not properly paired)\n\n[Examples]:\n\nExample 1: Single keyword with MultiInput (CORRECT way)\nUser: \"Create a task to scrape Amazon products for 'iPhone'\"\n-> 1. searchTemplates(keyword: \"Amazon\")\n-> 2. getTemplateView(templateId: <selected_id>) // Check ControlType in parameters\n-> 3. If parameter ControlType=\"MultiInput\":\n     create_task_from_template(\n       templateId: <id>,\n       taskName: \"Amazon Product Scraper\",\n       userInputParameters: {\n         UIParameters: [{Id: \"param_id_1\", Value: [\"iPhone\"]}], // Array with one element\n         TemplateParameters: [{ParamName: \"SearchKeyword\", Value: [\"iPhone\"]}] // Array with one element\n       }\n     )\n\nExample 2: Multiple keywords with MultiInput (CORRECT way)\nUser: \"Create Amazon scraper for 'iPhone', 'Samsung', and 'Google Pixel'\"\n-> create_task_from_template(\n     templateId: <id>,\n     taskName: \"Amazon Multi-Keyword Scraper\",\n     userInputParameters: {\n       UIParameters: [{Id: \"param_id_1\", Value: [\"iPhone\", \"Samsung\", \"Google Pixel\"]}], // Array\n       TemplateParameters: [{ParamName: \"SearchKeyword\", Value: [\"iPhone\", \"Samsung\", \"Google Pixel\"]}] // Array\n     }\n   )\n\nExample 3: WRONG way - String instead of Array for MultiInput\n❌ INCORRECT:\nuserInputParameters: {\n  UIParameters: [{Id: \"param_id_1\", Value: \"iPhone\"}], // String, will FAIL\n  TemplateParameters: [{ParamName: \"SearchKeyword\", Value: \"iPhone\"}] // String, will FAIL\n}\nThis will cause task creation to fail because MultiInput requires an array!\n\nExample 4: Mixed parameter types\n-> 1. getTemplateView(templateId: 12345) // Get all parameter types\n-> 2. Check parameters:\n     - SearchKeyword: ControlType=\"MultiInput\" -> Use array\n     - MaxPages: ControlType=\"NumberInput\" -> Use number\n     - EnableProxy: ControlType=\"Checkbox\" -> Use boolean\n-> 3. create_task_from_template(\n     templateId: 12345,\n     taskName: \"Complex Scraper\",\n     userInputParameters: {\n       UIParameters: [\n         {Id: \"param_id_1\", Value: [\"keyword1\", \"keyword2\"]}, // MultiInput = array\n         {Id: \"param_id_2\", Value: 10}, // NumberInput = number\n         {Id: \"param_id_3\", Value: true} // Checkbox = boolean\n       ],\n       TemplateParameters: [\n         {ParamName: \"SearchKeyword\", Value: [\"keyword1\", \"keyword2\"]}, // Array\n         {ParamName: \"MaxPages\", Value: 10}, // Number\n         {ParamName: \"EnableProxy\", Value: true} // Boolean\n       ]\n     }\n   )",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "templateId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "description": "REQUIRED: The template ID to use for task creation. Must be a valid template ID obtained from searchTemplates or getTemplateView. Verify template exists before calling."
+      },
+      "taskName": {
+        "type": "string",
+        "minLength": 1,
+        "description": "OPTIONAL but RECOMMENDED: A descriptive name for the task. If not provided, system auto-generates a name. BEST PRACTICE: Always ask user for a meaningful name like \"Amazon Product Scraper - Electronics\"."
+      },
+      "taskGroupId": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "description": "OPTIONAL: The task group ID to organize this task. Get available groups from getTaskGroups(). If omitted, task goes to default group. RECOMMEND: Ask user or use their most recent group."
+      },
+      "userInputParameters": {
+        "type": "object",
+        "properties": {
+          "UIParameters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Id": {
+                  "type": "string",
+                  "description": "REQUIRED: Parameter ID from template schema. This uniquely identifies the parameter in the UI layer."
+                },
+                "Value": {
+                  "description": "OPTIONAL: Parameter value. Can be string, number, array, or object depending on parameter type."
+                },
+                "Customize": {
+                  "description": "OPTIONAL: Customization configuration object"
+                },
+                "sourceTaskId": {
+                  "type": "string",
+                  "description": "OPTIONAL: Source task ID for task chaining"
+                },
+                "sourceField": {
+                  "type": "string",
+                  "description": "OPTIONAL: Field from source task"
+                }
+              },
+              "required": [
+                "Id"
+              ],
+              "additionalProperties": false
+            },
+            "description": "REQUIRED: UI-level parameters for Octoparse Desktop client display. Each parameter in this array MUST have a corresponding entry in TemplateParameters with matching value."
+          },
+          "TemplateParameters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "ParamName": {
+                  "type": "string",
+                  "description": "REQUIRED: Parameter name from template. This is the key used during task execution."
+                },
+                "Value": {
+                  "description": "OPTIONAL: Parameter value. Must match the corresponding UIParameter value."
+                }
+              },
+              "required": [
+                "ParamName"
+              ],
+              "additionalProperties": false
+            },
+            "description": "REQUIRED: Template-level parameters for task execution. Each parameter in this array MUST have a corresponding entry in UIParameters with matching value."
+          }
+        },
+        "required": [
+          "UIParameters",
+          "TemplateParameters"
+        ],
+        "additionalProperties": false,
+        "description": "REQUIRED: User input parameters object containing BOTH UIParameters and TemplateParameters arrays. CRITICAL: Both arrays are mandatory and parameters must be paired (every parameter in UIParameters must exist in TemplateParameters and vice versa). Get parameter schema from getTemplateView before constructing this object. Example: {UIParameters: [{Id: \"param-id\", Value: \"value\"}], TemplateParameters: [{ParamName: \"ParamName\", Value: \"value\"}]}"
+      },
+      "urlSourceTaskId": {
+        "type": "string",
+        "description": "ADVANCED: Task ID to use as URL source for task chaining. Only use if user explicitly wants to chain tasks."
+      },
+      "urlSourceTaskField": {
+        "type": "string",
+        "description": "ADVANCED: Field name from source task containing URLs. Required if urlSourceTaskId is provided."
+      }
+    },
+    "required": [
+      "templateId",
+      "userInputParameters"
+    ],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "mcp",
+    "server": "user-octoparse",
+    "tool": "create_task_from_template",
+    "endpoint": "https://mcp.octoparse.com",
+    "endpoints": {
+      "international": "https://mcp.octoparse.com",
+      "china": "https://mcp.bazhuayu.com"
+    },
+    "defaultRegion": "international",
+    "regionEnv": "OCTOPARSE_MCP_REGION"
+  }
+}

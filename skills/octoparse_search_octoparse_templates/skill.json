@@ -1,0 +1,27 @@
+{
+  "name": "octoparse_search_octoparse_templates",
+  "description": "Searches the Octoparse template library by keyword and returns a list of matching templates with detailed information.\n\n[When to use]:\n- MUST call when user asks to \"find templates\", \"search templates\", or \"browse templates\"\n- MUST call when user mentions a specific website/platform and wants to scrape it (e.g., \"Amazon template\", \"eBay scraper\")\n- Call when user asks \"what templates are available\" or \"show me templates for X\"\n\n[When NOT to use]:\n- DO NOT call if user already has a specific template ID and wants details (use getTemplateView instead)\n- DO NOT call if user wants to create a task (use createTemplateTask after getting the template ID)\n- DO NOT call if user asks about template categories (use getTemplateKinds instead)\n\n[Parameter Guidelines]:\n- keyword (optional): If provided, searches by keyword. If omitted or empty, returns popular/recommended templates.\n- IMPORTANT: If user mentions a specific platform name (e.g., \"Amazon\", \"Facebook\"), use that as the keyword exactly.\n- DO NOT fabricate or assume template availability - search first, then report results.\n\n[Output Requirements]:\nWhen presenting results, you MUST display ALL these fields for EACH template:\n- id: Template identifier (required for creating tasks)\n- enName: Template name\n- slug: URL-friendly identifier\n- pricePerData: Cost per data unit\n- accountLimit: Required account level (check against user's current level from getUserInfo)\n- enDescription: What the template does\n- runOn: Where it can run (1=Local only, 2=Cloud only, 3=Both) - CRITICAL for startCloudTask\n\n[Key Field Descriptions]:\n- id: The unique identifier for the template\n- slug: The URL-friendly slug for the template\n- pricePerData: The price per unit of data\n- prices: A JSON string representing different pricing tiers\n- likes: The number of likes the template has received\n- status: The status of the template (e.g., 1 for Published)\n- kindIds: An array of category IDs for the template\n- enName: The English name of the template\n- enKeywords: An array of English keywords\n- enImageUrl: The URL for the template's English image\n- enDescription: The English description of the template\n- accountLimit: Account level restrictions\n- runOn: Where the template can be run (1: Local, 2: Cloud, 3: Both)\n- type: The type of the template\n- minClientVersion: The minimum client version required to run the template\n- isPrivate: Whether the template is private\n- trialable: Whether the template is trialable\n- allowCrossAccountLevelPricing: Whether cross-account level pricing is allowed\n\n[Examples]:\nUser: \"Find templates for Amazon\"\n-> Call search_octoparse_templates(keyword: \"Amazon\")\n\nUser: \"What templates can I use?\"\n-> Call search_octoparse_templates() // no keyword = browse all\n\nUser: \"Show me template 12345 details\"\n-> DO NOT call this tool, call getTemplateView(templateId: 12345) instead",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "keyword": {
+        "type": "string",
+        "description": "Search keyword for templates. Use the exact platform/website name if user mentions one (e.g., 'Amazon', 'LinkedIn'). If omitted, returns popular templates. DO NOT fabricate keywords - use user's exact words."
+      }
+    },
+    "required": [],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "mcp",
+    "server": "user-octoparse",
+    "tool": "search_octoparse_templates",
+    "endpoint": "https://mcp.octoparse.com",
+    "endpoints": {
+      "international": "https://mcp.octoparse.com",
+      "china": "https://mcp.bazhuayu.com"
+    },
+    "defaultRegion": "international",
+    "regionEnv": "OCTOPARSE_MCP_REGION"
+  }
+}

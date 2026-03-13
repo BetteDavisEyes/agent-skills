@@ -1,0 +1,32 @@
+{
+  "name": "octoparse_stop_cloud_task_execution",
+  "description": "Stops a currently running task on Octoparse's cloud infrastructure. The task will cease execution immediately.\n\n[When to use]:\n- MUST call when user says \"stop task\", \"halt task X\", \"cancel scraping\", \"pause task Y\"\n- Call when user wants to terminate a running task\n- Call when user wants to stop a malfunctioning task\n\n[Prerequisites]:\n- Task must be currently running. Check with getTaskStatus first to avoid unnecessary API calls.\n- Task must exist. If unsure, call getTaskInfoById to verify.\n\n[When NOT to use]:\n- DO NOT call if task is not running\n- DO NOT call if user wants to start a task (use startCloudTask instead)\n\n[IMPORTANT - Data Preservation]:\n- Stopping a task does NOT delete collected data\n- Data collected before stopping is still available\n- Use saveNoExportedData to retrieve partial results after stopping\n- Task can be restarted later with startCloudTask\n\n[Examples]:\nUser: \"Stop my Amazon scraper\"\n-> 1. searchTaskList(keyWord: \"Amazon\")\n-> 2. getTaskStatus([<task_id>])\n-> 3. stop_cloud_task_execution(taskId: <task_id>)\n\nUser: \"Start task 456\"\n-> DO NOT call this tool, call startCloudTask instead",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "taskId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "pattern": "^[a-zA-Z0-9_-]+$",
+        "description": "REQUIRED: The ID of the task to stop. Must be a currently running task. Verify task exists and is running with getTaskStatus first for best UX."
+      }
+    },
+    "required": [
+      "taskId"
+    ],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "mcp",
+    "server": "user-octoparse",
+    "tool": "stop_cloud_task_execution",
+    "endpoint": "https://mcp.octoparse.com",
+    "endpoints": {
+      "international": "https://mcp.octoparse.com",
+      "china": "https://mcp.bazhuayu.com"
+    },
+    "defaultRegion": "international",
+    "regionEnv": "OCTOPARSE_MCP_REGION"
+  }
+}

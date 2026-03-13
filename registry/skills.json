@@ -1,0 +1,105 @@
+{
+  "version": "1.0",
+  "skills": [
+    {
+      "name": "crawl_page",
+      "description": "Crawls a web page and returns its HTML content. Use this skill when you need to fetch the raw HTML of a URL for further processing, analysis, or extraction.",
+      "path": "skills/crawl_page"
+    },
+    {
+      "name": "discover_urls",
+      "description": "Discovers and extracts all URLs from a web page or HTML content. Use this skill to find links for crawling, build site maps, or discover related pages.",
+      "path": "skills/discover_urls"
+    },
+    {
+      "name": "extract_structured_data",
+      "description": "Extracts structured data from HTML using CSS selectors or JSON-LD/schema.org markup. Use this skill to scrape product info, article metadata, or tables.",
+      "path": "skills/extract_structured_data"
+    },
+    {
+      "name": "octoparse_create_task_from_template",
+      "description": "Creates a new scraping task based on an Octoparse template. This is the primary way to set up a new data extraction job.\n\n[When to use]:\n- MUST call when user says \"create a task\", \"set up a scraper\",...",
+      "path": "skills/octoparse_create_task_from_template"
+    },
+    {
+      "name": "octoparse_get_task_data_count",
+      "description": "Retrieves the total count of collected data for a specific task. Use this to check how much data has been scraped without downloading all the data.\n\n[When to use]:\n- MUST call when user asks \"how much...",
+      "path": "skills/octoparse_get_task_data_count"
+    },
+    {
+      "name": "octoparse_get_task_detailed_info",
+      "description": "Retrieves comprehensive configuration and metadata of a specific task, including template info, parameters, group assignment, and creation details.\n\n[What This Tool Returns]:\n- Task configuration: Nam...",
+      "path": "skills/octoparse_get_task_detailed_info"
+    },
+    {
+      "name": "octoparse_get_task_execution_status",
+      "description": "Retrieves the current execution status of one or multiple Octoparse tasks. Use this to monitor task progress and state.\n\n[When to use]:\n- MUST call when user asks \"is task X running?\", \"what's the sta...",
+      "path": "skills/octoparse_get_task_execution_status"
+    },
+    {
+      "name": "octoparse_get_task_scraped_data",
+      "description": "Retrieves scraped data from a task as a JSON structure. Gets data that hasn't been exported yet and returns it directly as a JSON array.\n\n[When to use]:\n- MUST call when user says \"get data\", \"fetch t...",
+      "path": "skills/octoparse_get_task_scraped_data"
+    },
+    {
+      "name": "octoparse_get_template_categories",
+      "description": "Retrieves all available template categories (kinds) in the Octoparse template library.\n\n[When to use]:\n- MUST call when user asks \"what categories of templates are available\"\n- Call when user wants to...",
+      "path": "skills/octoparse_get_template_categories"
+    },
+    {
+      "name": "octoparse_get_template_details_by_id",
+      "description": "Retrieves comprehensive details of a specific Octoparse template by its numeric ID, including version information, user permissions, and runtime requirements.\n\n[CRITICAL - Best Practices]:\n- The \"prom...",
+      "path": "skills/octoparse_get_template_details_by_id"
+    },
+    {
+      "name": "octoparse_get_template_details_by_slug",
+      "description": "Retrieves comprehensive details of a specific Octoparse template by its URL-friendly slug identifier.\n\n[CRITICAL - Best Practices]:\n- The \"prompts\" field contains high-level template instructions.\n- I...",
+      "path": "skills/octoparse_get_template_details_by_slug"
+    },
+    {
+      "name": "octoparse_get_user_account_info",
+      "description": "Retrieves comprehensive account information for the authenticated Octoparse user, including account level, subscription status, balances, and binding accounts.\n\n[When to use]:\n- MUST call when user as...",
+      "path": "skills/octoparse_get_user_account_info"
+    },
+    {
+      "name": "octoparse_get_user_task_groups",
+      "description": "Retrieves all task groups (folders/categories) that belong to the current user. Task groups are used to organize tasks.\n\n[What are Task Groups]:\nTask groups are organizational containers for tasks, si...",
+      "path": "skills/octoparse_get_user_task_groups"
+    },
+    {
+      "name": "octoparse_greet_user_and_introduce_octoparse",
+      "description": "Provides a warm greeting and comprehensive introduction to the Octoparse MCP Server capabilities.\n\n[When to use]:\n- MUST call when user explicitly greets (e.g., \"hello\", \"hi octoparse\", \"what can you ...",
+      "path": "skills/octoparse_greet_user_and_introduce_octoparse"
+    },
+    {
+      "name": "octoparse_search_octoparse_templates",
+      "description": "Searches the Octoparse template library by keyword and returns a list of matching templates with detailed information.\n\n[When to use]:\n- MUST call when user asks to \"find templates\", \"search templates...",
+      "path": "skills/octoparse_search_octoparse_templates"
+    },
+    {
+      "name": "octoparse_search_user_task_list",
+      "description": "Searches the user's task list with flexible filtering options including keyword, group, status, and pagination. This is the primary tool for finding tasks.\n\n[When to use]:\n- MUST call when user says \"...",
+      "path": "skills/octoparse_search_user_task_list"
+    },
+    {
+      "name": "octoparse_start_cloud_task_execution",
+      "description": "Starts a scraping task on Octoparse's cloud infrastructure. The task will run on cloud servers and extract data according to its configuration.\n\n[When to use]:\n- MUST call when user says \"start task\",...",
+      "path": "skills/octoparse_start_cloud_task_execution"
+    },
+    {
+      "name": "octoparse_stop_cloud_task_execution",
+      "description": "Stops a currently running task on Octoparse's cloud infrastructure. The task will cease execution immediately.\n\n[When to use]:\n- MUST call when user says \"stop task\", \"halt task X\", \"cancel scraping\",...",
+      "path": "skills/octoparse_stop_cloud_task_execution"
+    },
+    {
+      "name": "octoparse_update_existing_template_task",
+      "description": "Updates an existing template-based task with new parameters, name, or group assignment. This is for modifying tasks that have already been created.\n\n[When to use]:\n- MUST call when user says \"update t...",
+      "path": "skills/octoparse_update_existing_template_task"
+    },
+    {
+      "name": "render_page",
+      "description": "Renders a web page using a headless browser and returns the final DOM/HTML after JavaScript execution. Use for SPAs and dynamic content.",
+      "path": "skills/render_page"
+    }
+  ]
+}

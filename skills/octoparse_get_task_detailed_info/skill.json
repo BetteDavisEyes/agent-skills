@@ -1,0 +1,32 @@
+{
+  "name": "octoparse_get_task_detailed_info",
+  "description": "Retrieves comprehensive configuration and metadata of a specific task, including template info, parameters, group assignment, and creation details.\n\n[What This Tool Returns]:\n- Task configuration: Name, description, settings\n- Template information: templateId, templateRegistrationId, templateVersion\n- Task parameters: userInputParameters structure\n- Organization: taskGroupId, folder assignment\n- Metadata: Creation date, last modified, owner\n- DO NOT confuse with execution status (use getTaskStatus for that)\n\n[When to use]:\n- MUST call when user asks \"show me task X details\", \"what's in task Y?\", \"how is task Z configured?\"\n- MUST call BEFORE updateTemplateTask to get current configuration\n- Call when user wants to see task parameters or template info\n- Call when user wants to know which template a task uses\n- Call to verify a task exists before other operations\n\n[When NOT to use]:\n- DO NOT call if user only needs execution status (use getTaskStatus instead)\n- DO NOT call if user is searching for tasks (use searchTaskList instead)\n- DO NOT call if user wants to start/stop task (check status with getTaskStatus first)\n\n[Key Difference: Info vs Status]:\n- get_task_detailed_info: Returns task CONFIGURATION (what it is)\n- getTaskStatus: Returns task EXECUTION STATUS (what it's doing)\n\nExample confusion:\nUser: \"Is task 123 running?\" -> Use getTaskStatus, NOT this tool\nUser: \"What template does task 123 use?\" -> Use THIS tool\n\n[Examples]:\nUser: \"Show me details of task abc123\"\n-> get_task_detailed_info(taskId: \"abc123\")\n\nUser: \"What template is task 456 using?\"\n-> get_task_detailed_info(taskId: \"456\")\n\nUser: \"Is task 789 running?\"\n-> DO NOT use this tool, use getTaskStatus([\"789\"]) instead\n\nUser: \"I want to modify task xyz\"\n-> 1. get_task_detailed_info(taskId: \"xyz\")\n-> 2. Modify necessary fields\n-> 3. updateTemplateTask(...)",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "taskId": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "pattern": "^[a-zA-Z0-9_-]+$",
+        "description": "REQUIRED: The ID of the task to retrieve details for. Must be a valid, existing task ID. If unsure, search first with searchTaskList to find the task ID."
+      }
+    },
+    "required": [
+      "taskId"
+    ],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "mcp",
+    "server": "user-octoparse",
+    "tool": "get_task_detailed_info",
+    "endpoint": "https://mcp.octoparse.com",
+    "endpoints": {
+      "international": "https://mcp.octoparse.com",
+      "china": "https://mcp.bazhuayu.com"
+    },
+    "defaultRegion": "international",
+    "regionEnv": "OCTOPARSE_MCP_REGION"
+  }
+}

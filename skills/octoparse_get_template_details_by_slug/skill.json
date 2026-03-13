@@ -1,0 +1,30 @@
+{
+  "name": "octoparse_get_template_details_by_slug",
+  "description": "Retrieves comprehensive details of a specific Octoparse template by its URL-friendly slug identifier.\n\n[CRITICAL - Best Practices]:\n- The \"prompts\" field contains high-level template instructions.\n- Individual parameters in the \"parameters\" field also contain embedded \"Instruction\" text (originally from the Remark field).\n- You MUST follow ALL these instructions to ensure correct configuration. Think of these as the template's manual.\n- Note: The \"Remark\" field itself is hidden from output, but its content is preserved in parameter descriptions.\n\n[What is a Slug]:\nA slug is a URL-friendly identifier like \"amazon-product-scraper\" or \"linkedin-people-search\". It's the human-readable version of a template ID, often used in URLs.\n\n[When to use]:\n- MUST call when you have a template slug (from searchTemplates or user provides a template URL)\n- Call when user provides a template link/URL and you extract the slug from it\n- Call when user refers to a template by its human-readable name and you need to convert it\n\n[When NOT to use]:\n- DO NOT call if you have a numeric template ID (use getTemplateView instead - it's more efficient)\n- DO NOT call if you're searching by keyword (use searchTemplates instead)\n- DO NOT guess slug names - if user mentions a template name, search first with searchTemplates\n\n[Parameter Format]:\n- slug: Must be a lowercase, hyphenated string (e.g., \"amazon-product-scraper\")\n- IMPORTANT: Extract slug from template URLs like \"https://octoparse.com/template/amazon-product-scraper\"\n- DO NOT use template names directly - slugs are specific identifiers\n\n[Examples]:\nUser: \"Show me details of template amazon-product-scraper\"\n-> Call get_template_details_by_slug(slug: \"amazon-product-scraper\")\n\nUser: \"I want to use https://octoparse.com/template/linkedin-people-search\"\n-> Extract \"linkedin-people-search\" and call get_template_details_by_slug(slug: \"linkedin-people-search\")\n\nUser: \"Show me template 12345\"\n-> DO NOT call this tool, call getTemplateView(templateId: 12345) instead",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "slug": {
+        "type": "string",
+        "minLength": 1,
+        "description": "The URL-friendly slug identifier of the template (e.g., \"amazon-product-scraper\"). Must be lowercase with hyphens. Extract from URLs or use exact slug from searchTemplates results. DO NOT guess or fabricate slugs."
+      }
+    },
+    "required": [
+      "slug"
+    ],
+    "additionalProperties": false
+  },
+  "invoke": {
+    "type": "mcp",
+    "server": "user-octoparse",
+    "tool": "get_template_details_by_slug",
+    "endpoint": "https://mcp.octoparse.com",
+    "endpoints": {
+      "international": "https://mcp.octoparse.com",
+      "china": "https://mcp.bazhuayu.com"
+    },
+    "defaultRegion": "international",
+    "regionEnv": "OCTOPARSE_MCP_REGION"
+  }
+}
