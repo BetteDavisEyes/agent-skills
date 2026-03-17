@@ -1,5 +1,5 @@
 ---
-name: Octoparse Data Export
+name: octoparse-data-export
 description: Retrieve and process data results from Octoparse tasks. Manages the transition from scraped data to usable information while respecting API limits and data synchronization states.
 ---
 

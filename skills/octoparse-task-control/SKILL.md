@@ -1,5 +1,5 @@
 ---
-name: Octoparse Task Control
+name: octoparse-task-control
 description: Orchestrate the execution of scraping tasks on Octoparse's cloud infrastructure. Manage task lifecycle from pre-run checks to completion monitoring.
 ---
 
