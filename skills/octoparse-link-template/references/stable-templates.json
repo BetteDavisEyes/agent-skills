@@ -90,9 +90,15 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
-    "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity": "detail-level",
+    "record_granularity_confidence": "medium",
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Maps Email Finder",
@@ -191,9 +197,16 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
-    "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity": "detail-level",
+    "record_granularity_confidence": "medium",
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page",
+      "website-homepage"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Maps Leads Scraper (by Keywords)",
@@ -272,7 +285,13 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Search Scraper",
@@ -441,7 +460,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Twitter Advanced Search Scraper",
@@ -653,7 +677,11 @@
     ],
     "record_granularity": "post-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "🔥 LinkedIn Job Scraper (No Login Required)",
@@ -767,7 +795,13 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Maps Store Listing Scraper (Japan)",
@@ -817,7 +851,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Twitter Scraper (by Account URL)",
@@ -935,9 +974,14 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "profile-level",
-    "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity": "post-level",
+    "record_granularity_confidence": "high",
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page",
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Maps Reviews Scraper",
@@ -988,7 +1032,11 @@
     ],
     "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Pagesjaunes Business Info Scraper",
@@ -1026,7 +1074,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Superpages Scraper",
@@ -1081,9 +1134,15 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
-    "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity": "detail-level",
+    "record_granularity_confidence": "medium",
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "🔥 Indeed Job Scraper",
@@ -1146,9 +1205,14 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
-    "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity": "detail-level",
+    "record_granularity_confidence": "medium",
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "TikTok Video Details & Comments Scraper",
@@ -1208,9 +1272,16 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
+    "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page",
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Twitter Scraper (by hashtag)",
@@ -1262,7 +1333,12 @@
     ],
     "record_granularity": "post-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "JP Indeed Job Listing Scraper by keywords",
@@ -1318,7 +1394,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Reviews Scraper",
@@ -1372,7 +1452,11 @@
     ],
     "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Twitter (X) Comments Scraper",
@@ -1428,9 +1512,13 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
+    "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Maps Leads Scraper (by URLs)",
@@ -1490,9 +1578,15 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "listing-level",
+    "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google SERP scraper (Top 5 results)",
@@ -1533,7 +1627,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Product Scraper (for US)",
@@ -1605,7 +1704,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Itown Listing scraper",
@@ -1647,7 +1750,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "TikTok Search Scraper (No Login Required)",
@@ -1710,7 +1818,12 @@
     ],
     "record_granularity": "post-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "YouTube Channel Scraper",
@@ -1770,7 +1883,11 @@
     ],
     "record_granularity": "post-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Search Email Finder (Premium)",
@@ -1939,7 +2056,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Reddit Post & Comments Scraper",
@@ -1988,9 +2110,13 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
+    "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "🔥 Indeed Job Scraper (by URL)",
@@ -2037,9 +2163,13 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
-    "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity": "detail-level",
+    "record_granularity_confidence": "medium",
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Twitter Advanced Search Comments Scraper",
@@ -2227,9 +2357,13 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "profile-level",
-    "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity": "review-level",
+    "record_granularity_confidence": "high",
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Naver Map Scraper(by Keyword)",
@@ -2270,7 +2404,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Yellow Pages Scraper (Cloud)",
@@ -2314,7 +2453,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "YouTube Comments & Replies Scraper",
@@ -2371,9 +2514,13 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
+    "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Leboncoin Data Scraper",
@@ -2422,7 +2569,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Review Details Scraper (for Japan)",
@@ -2469,7 +2620,12 @@
     ],
     "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page",
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "TikTok Profile Scraper",
@@ -2531,7 +2687,14 @@
     ],
     "record_granularity": "profile-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page",
+      "profile-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Social Media Finder",
@@ -2563,7 +2726,11 @@
     ],
     "record_granularity": "profile-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "profile-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "JP Indeed Job Listings Scraper by URL (cloud only)",
@@ -2604,7 +2771,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Itown page details_cloud only",
@@ -2638,9 +2809,13 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "listing-level",
+    "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Stepstone Listing Job Scraper",
@@ -2685,7 +2860,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Zillow Listing Scraper (by URL)",
@@ -2723,9 +2903,14 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "listing-level",
+    "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Reddit Subreddit Scraper",
@@ -2778,7 +2963,11 @@
     ],
     "record_granularity": "post-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Coupang Review Scraper(cloud)",
@@ -2808,7 +2997,11 @@
     ],
     "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Idealista Listing Pages Scraper",
@@ -2853,7 +3046,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Coupang Product List Scraper(cloud ver.)",
@@ -2891,7 +3088,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Gelbe Seiten Listing Scraper (Cloud by keyword pairs)",
@@ -2927,7 +3129,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Details ASIN Scraper (for germany)",
@@ -2980,7 +3187,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Reddit Search Scraper",
@@ -3041,7 +3252,12 @@
     ],
     "record_granularity": "post-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "TikTok Video Details Scraper",
@@ -3090,7 +3306,12 @@
     ],
     "record_granularity": "post-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page",
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Job Scraper (by Keywords)",
@@ -3141,9 +3362,16 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "listing-level",
+    "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page",
+      "website-homepage"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Idealista Details Scraper",
@@ -3188,7 +3416,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Product Scraper (for germany)",
@@ -3241,7 +3473,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Helloasso Association Emails Scraper",
@@ -3286,7 +3523,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Wallapop Scraper (by Urls)",
@@ -3333,7 +3574,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Mercari Product Listings Scraper",
@@ -3375,7 +3620,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "AliExpress Scraper",
@@ -3436,7 +3686,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Japan Product Details Scraper",
@@ -3487,7 +3742,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Maps advanced Scraper for Japan",
@@ -3572,9 +3831,13 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "post-level",
-    "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity": "detail-level",
+    "record_granularity_confidence": "medium",
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Zillow Profile Scraper",
@@ -3620,7 +3883,13 @@
     ],
     "record_granularity": "profile-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page",
+      "profile-page",
+      "website-homepage"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Immobiliare Listing Scraper (Cloud Only)",
@@ -3672,7 +3941,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Review Scraper (for UK)",
@@ -3734,7 +4007,11 @@
     ],
     "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Pagesjaunes Emails Scraper",
@@ -3794,7 +4071,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Zillow Details Scraper",
@@ -3882,7 +4164,12 @@
     ],
     "record_granularity": "post-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page",
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Gelbe Seiten Details Scraper (Cloud by URLs)",
@@ -3927,7 +4214,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Seloger biens à vendre Scraper",
@@ -3977,9 +4268,13 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "listing-level",
+    "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Transfermarkt.de TOP Scorers Scraper",
@@ -4015,9 +4310,14 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "listing-level",
+    "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Naver Shopping/Smart Store Scraper",
@@ -4065,7 +4365,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Pagesblanches Info Scraper",
@@ -4110,7 +4415,13 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Idealista Real Estate Listing Scraper (Italy)",
@@ -4160,7 +4471,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Maps Shop Listing (for Germany)",
@@ -4204,7 +4519,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Product Details Scraper (for Spain)",
@@ -4258,7 +4578,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Reviews Scraper (for Italy)",
@@ -4316,7 +4640,11 @@
     ],
     "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Vinted Data Scraper (by URL)",
@@ -4363,7 +4691,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Stepstone Listing Scraper nach URLs",
@@ -4400,7 +4732,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Ali Express Product List Scraper(Korean Version)",
@@ -4464,7 +4800,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Idealista Real Estate Detail Scraper (Italy)",
@@ -4508,7 +4849,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Malt freelance Info Scraper",
@@ -4550,7 +4895,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Tripadvisor Hotel Details Scraper（for Japan）",
@@ -4597,7 +4946,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Tripadvisor Hotel Listings Scraper（for Japan）",
@@ -4658,7 +5011,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Tripadvisor Review Scraper (for Germany)",
@@ -4701,7 +5058,11 @@
     ],
     "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Haken Rikunabi Job Scraper",
@@ -4745,7 +5106,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Booking Hôtel Info Scraper",
@@ -4796,7 +5161,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "TripAdvisor Hotel Reviews Scraper",
@@ -4856,7 +5225,11 @@
     ],
     "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Review Scraper (for France)",
@@ -4917,7 +5290,11 @@
     ],
     "record_granularity": "review-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "review-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Groupon Scraper",
@@ -4963,7 +5340,13 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google Maps Scraper (store details by keyword for spanish)",
@@ -5013,7 +5396,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Japan URLs Scraper",
@@ -5057,7 +5445,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Google News Scraper (Cloud)",
@@ -5109,7 +5501,13 @@
     ],
     "record_granularity": "article-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "article-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Subito Listing Scraper",
@@ -5153,7 +5551,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Hoteles Details Scraper",
@@ -5190,7 +5592,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "SeasonalJobs Scraper",
@@ -5243,7 +5649,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Otto Scraper (Produkt Details)",
@@ -5284,7 +5694,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Rushbet Scraper",
@@ -5331,7 +5745,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Transfermarkt.de Overall Game Schedule Scraper",
@@ -5367,7 +5785,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Zillow Listing Scraper (by keyword)",
@@ -5412,9 +5835,14 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "listing-level",
+    "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Wallapop Scraper (by Keywords)",
@@ -5461,7 +5889,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Leroy Merlin Product Scraper",
@@ -5503,7 +5936,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Mercari Product Details Scraping by URL (Cloud Only)",
@@ -5548,7 +5986,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Kompass Leads Scraper (for Germany)",
@@ -5583,7 +6025,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Stepstone Details Job Scraper",
@@ -5625,7 +6071,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "eBay Produits Détails Scraper",
@@ -5663,7 +6113,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "eInforma Details Scraper",
@@ -5708,7 +6162,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Prime Scraper",
@@ -5763,7 +6221,12 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Product Listing Scraper (for UK)",
@@ -5808,7 +6271,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "TripAdvisor Scraper (Hotel Details)",
@@ -5857,7 +6325,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "TripAdvisor Scraper (Hotel Listing)",
@@ -5918,7 +6390,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Gmarket product information scarper",
@@ -5949,7 +6425,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "low",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Twitter People Search Scraper",
@@ -6066,7 +6546,11 @@
     ],
     "record_granularity": "post-level",
     "record_granularity_confidence": "high",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "post-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Ebay Details Scraper (By Search Keywords)",
@@ -6114,9 +6598,14 @@
       "Seeded from internal MCP-stable template spreadsheet.",
       "Input fields may be incomplete and should be backfilled from template details or INPUT.md."
     ],
-    "record_granularity": "listing-level",
+    "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "galaxus",
@@ -6151,7 +6640,13 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "low",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page",
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Shein Scraper (Product Listing by Keyword)",
@@ -6195,7 +6690,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Flipkart Product Scraper",
@@ -6236,7 +6736,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Flipkart Listing Scraper",
@@ -6284,7 +6788,11 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Product Details Scraper (for India)",
@@ -6355,7 +6863,11 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Product Listing Scraper (for India)",
@@ -6408,7 +6920,12 @@
     ],
     "record_granularity": "listing-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "search-input",
+      "listing-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   },
   {
     "name": "Amazon Product Details Scraper (for UK)",
@@ -6460,6 +6977,10 @@
     ],
     "record_granularity": "detail-level",
     "record_granularity_confidence": "medium",
-    "record_granularity_source": "heuristic_v1"
+    "record_granularity_source": "heuristic_v4",
+    "collection_stages": [
+      "detail-page"
+    ],
+    "collection_stages_source": "heuristic_v2"
   }
 ]
