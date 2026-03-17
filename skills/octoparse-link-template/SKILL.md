@@ -55,6 +55,7 @@ Your job:
 Always return these sections:
 
 ### Recommended Chain
+
 Show the best template chain in order.
 
 Format:
@@ -63,6 +64,7 @@ Format:
 If there is more than one reasonable chain, show the recommended one first and briefly mention alternatives.
 
 ### Field Mapping
+
 Explicitly map upstream output fields to downstream input fields.
 
 Format:
@@ -72,6 +74,7 @@ Format:
 Be specific about URL types and do not collapse different URL categories into one.
 
 ### Why This Chain Works
+
 Explain the logic of the chain in plain language.
 
 Focus on:
@@ -80,6 +83,7 @@ Focus on:
 - why this chain is better than a weaker or shorter alternative
 
 ### Risks and Limitations
+
 Always include risk notes.
 
 Common risks:
@@ -91,6 +95,7 @@ Common risks:
 - listing URLs and place detail URLs are not always interchangeable
 
 ### Possible Enrichments
+
 Suggest what the user can add next if they want more data.
 
 Examples:
@@ -239,11 +244,12 @@ Use inference only when needed.
 - the template category and description strongly imply a standard output shape
 
 ### Low-confidence inference should be labeled clearly
+
 Use phrases like:
-- "likely outputs"
-- "appears to support"
-- "based on the template description"
-- "inferred from the template page"
+- `likely outputs`
+- `appears to support`
+- `based on the template description`
+- `inferred from the template page`
 
 ## Stable template preference
 
@@ -293,7 +299,7 @@ Still provide:
 - the exact uncertain point
 
 Example:
-- "This chain is likely valid, but the output-to-input match is inferred from the template description because OUTPUT.md is not available."
+- `This chain is likely valid, but the output-to-input match is inferred from the template description because OUTPUT.md is not available.`
 
 ## What not to do
 
