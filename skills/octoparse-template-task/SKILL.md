@@ -1,5 +1,5 @@
 ---
-name: Octoparse Template Task Creation
+name: octoparse-template-task
 description: Create web scraping tasks using Octoparse's pre-defined templates. Handles multi-step workflows, parameter synchronization, and error self-correction.
 ---
 

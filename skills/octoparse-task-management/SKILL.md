@@ -1,5 +1,5 @@
 ---
-name: Octoparse Task Management
+name: octoparse-task-management
 description: Navigate and audit the Octoparse workspace. Find tasks, understand their configuration, and organize them via groups.
 ---
 
