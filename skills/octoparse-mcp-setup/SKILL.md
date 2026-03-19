@@ -99,13 +99,3 @@ Once setup is complete:
 | "Authorization timeout" | Ask user to check browser and complete login |
 | "Dynamic registration failed" | Retry authorization flow from Step 3 |
 | "Already authorized" | Skip authorization, configuration is complete |
-
-## Integration with Other Skills
-
-This skill is a prerequisite for all Octoparse skills:
-- `octoparse-template-task` - Creating scraping tasks
-- `octoparse-task-control` - Starting/stopping tasks
-- `octoparse-data-export` - Retrieving scraped data
-- `octoparse-task-management` - Managing tasks and groups
-
-**Other skills should check for MCP configuration and trigger this skill if missing.**

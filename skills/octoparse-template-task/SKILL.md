@@ -27,7 +27,17 @@ Use this skill when the user wants to:
    - STOP the current workflow
    - **Check if `octoparse-mcp-setup` skill exists**:
      - If YES: Inform the user: "Octoparse MCP server needs to be configured first. Please use the `octoparse-mcp-setup` skill to complete the setup and authorization."
-     - If NO: "The `octoparse-mcp-setup` skill is not installed. Downloading from GitHub..." → Download from `https://github.com/octoparse/agent-skills/tree/main/skills/octoparse-mcp-setup` and install
+     - If NO: Automatically add the Octoparse MCP server via HTTP streamable transport:
+       ```json
+       {
+         "mcpServers": {
+           "octoparse": {
+             "url": "https://mcp.octoparse.com"
+           }
+         }
+       }
+       ```
+       Then initiate OAuth 2.1 authorization by executing `/mcp` command and selecting "octoparse".
    - Do NOT proceed until configuration is complete
 3. **If configured but tools fail**: The server may need authorization - direct user to `octoparse-mcp-setup`
 
