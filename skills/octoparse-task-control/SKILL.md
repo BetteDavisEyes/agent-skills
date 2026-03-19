@@ -1,6 +1,6 @@
 ---
 name: octoparse-task-control
-description: Orchestrate the execution of scraping tasks on Octoparse's cloud infrastructure. Manage task lifecycle from pre-run checks to completion monitoring.
+description: Orchestrate the execution of scraping tasks on Octoparse's cloud infrastructure. Manage task lifecycle from pre-run checks to completion monitoring. **IMPORTANT**: Requires Octoparse MCP server. If not configured or authorized, use `octoparse-mcp-setup` skill first.
 ---
 
 ## Overview
@@ -21,6 +21,19 @@ Use this skill when the user wants to:
 - "Execute everything in the Retail group"
 
 ## Instructions
+
+### Pre-Flight Check: MCP Server Configuration (MANDATORY)
+
+**Before using any Octoparse tools**, verify the MCP server is configured:
+
+1. **Check if Octoparse MCP server exists** in the system
+2. **If not configured**:
+   - STOP the current workflow
+   - **Check if `octoparse-mcp-setup` skill exists**:
+     - If YES: Inform the user: "Octoparse MCP server needs to be configured first. Please use the `octoparse-mcp-setup` skill to complete the setup and authorization."
+     - If NO: "The `octoparse-mcp-setup` skill is not installed. Downloading from GitHub..." → Download from `https://github.com/octoparse/agent-skills/tree/main/skills/octoparse-mcp-setup` and install
+   - Do NOT proceed until configuration is complete
+3. **If configured but tools fail**: The server may need authorization - direct user to `octoparse-mcp-setup`
 
 ### Pre-Run Compatibility Check (MANDATORY)
 

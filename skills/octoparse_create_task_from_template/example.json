@@ -1,8 +1,0 @@
-{
-  "templateId": 1,
-  "taskName": "example_value",
-  "taskGroupId": 1,
-  "userInputParameters": {},
-  "urlSourceTaskId": "https://example.com",
-  "urlSourceTaskField": "https://example.com"
-}

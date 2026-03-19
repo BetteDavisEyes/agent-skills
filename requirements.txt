@@ -1,5 +1,0 @@
-# agent-skills - MCP to Skills Generator
-# Python 3.9+
-
-requests>=2.31.0
-jsonschema>=4.20.0
