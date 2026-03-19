@@ -1,259 +1,172 @@
-# agent-skills
-
-**Automatically convert MCP (Model Context Protocol) tools into AI Skills** that can be discovered and used by AI Agents.
+# Octoparse Agent Skills
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## Specification Compliance
+Claude Code skills for Octoparse web scraping platform. These skills provide workflow-oriented capabilities that orchestrate Octoparse MCP tools for task creation, management, control, and data export.
 
-This project aligns with the [Agent Skills Specification (agentskills.io)](https://agentskills.io/specification), the open format maintained by Anthropic and adopted by Claude, Cursor, Apify, and others.
+## Overview
 
-Each skill includes:
-- **SKILL.md** — agentskills.io compliant (YAML frontmatter + Markdown instructions)
-- **skill.json** — Tool schema for programmatic use (OpenAI/Anthropic function calling)
-- **example.json** — Sample input
+This repository contains **6 workflow skills** for Claude Code that simplify Octoparse operations:
 
-See [docs/SPEC_COMPARISON.md](docs/SPEC_COMPARISON.md) for spec comparison, [docs/MULTI_REGION.md](docs/MULTI_REGION.md) for multi-region config, [docs/PROJECT_EVALUATION.md](docs/PROJECT_EVALUATION.md) for project assessment.
+| Skill | Purpose | Key Features |
+|-------|---------|--------------|
+| **octoparse-mcp-setup** | Configure and authorize Octoparse MCP server | Auto-detect missing MCP, OAuth 2.1 authorization |
+| **octoparse-template-task** | Create scraping tasks from templates | Template discovery, parameter validation, error correction |
+| **octoparse-task-management** | Find and organize tasks | Progressive discovery, task groups, configuration audit |
+| **octoparse-task-control** | Start/stop cloud tasks | Pre-run checks, batch operations, status monitoring |
+| **octoparse-data-export** | Export scraped data | Incremental/full export, pagination, volume checks |
+| **octoparse-link-template** | Design template chains | Multi-template workflows, data enrichment patterns |
 
-## What are Skills?
+## Quick Start
 
-**Skills** are standardized, discoverable capability definitions that AI Agents can use to extend their functionality. Each skill describes:
+### Prerequisites
 
-- **What** it does (name, description)
-- **How** to call it (parameters with JSON Schema)
-- **Where** to invoke it (HTTP/MCP endpoint)
+- Claude Code with skill support
+- Octoparse account (for authorization)
 
-Skills bridge the gap between MCP tools (which use JSON-RPC over HTTP) and agent frameworks (OpenAI, Anthropic, LangChain, etc.) that need tool schemas for function calling.
+### Installation
 
-## How MCP Tools Convert to Skills
-
-MCP servers expose tools via the `tools/list` JSON-RPC method (POST to the MCP server URL). Each tool has:
-
-- `name` → Skill name
-- `description` → Skill description
-- `inputSchema` → Skill parameters (JSON Schema)
-
-The generator fetches this list, maps each tool to the skill schema format, and writes:
-
+1. Clone this repository:
+```bash
+git clone https://github.com/octoparse/agent-skills.git
+cd agent-skills/skills
 ```
-skills/
-  {tool_name}/
-    skill.json    # Full schema (name, description, parameters, invoke)
-    README.md     # Human-readable docs
-    example.json  # Example input
+
+2. Copy skills to your Claude Code skills directory:
+```bash
+# Default location (may vary by system)
+cp -r octoparse-* ~/.claude/skills/
 ```
+
+### Usage
+
+Once installed, simply ask Claude to perform Octoparse operations:
+
+- "Create an Amazon product scraper"
+- "Show me all my tasks"
+- "Start my eBay scraper"
+- "Export data from task abc123"
+
+The skills will automatically handle MCP server configuration and authorization on first use.
+
+## Skill Details
+
+### octoparse-mcp-setup
+
+**Purpose**: First-time setup and authorization for Octoparse MCP server.
+
+**Auto-Configuration Flow**:
+1. Detect if Octoparse MCP server is configured
+2. If missing, automatically add via HTTP streamable transport
+3. Initiate OAuth 2.1 authorization with dynamic client registration
+4. Verify connection before proceeding
+
+**Manual Trigger**: Use this skill explicitly if authorization expires.
+
+### octoparse-template-task
+
+**Purpose**: Create web scraping tasks using Octoparse's pre-defined templates.
+
+**Workflow**:
+1. Template Discovery - Search templates by platform (Amazon, eBay, etc.)
+2. Schema Inspection - Get template parameters and requirements
+3. Parameter Analysis - Validate input formats (MultiInput, TextInput, etc.)
+4. Task Creation - Submit with synchronized UI/Template parameters
+
+**Key Feature**: Automatic error correction for parameter mismatches.
+
+### octoparse-task-management
+
+**Purpose**: Navigate and audit the Octoparse workspace.
+
+**Capabilities**:
+- Find tasks by keyword, group, or status
+- View detailed task configuration
+- Browse task groups/folders
+- Progressive discovery for ambiguous queries
+
+**Example**: "Find my Amazon scraper" → searches, finds, reports task ID and status.
+
+### octoparse-task-control
+
+**Purpose**: Orchestrate task execution on Octoparse's cloud infrastructure.
+
+**Features**:
+- Pre-run compatibility checks (cloud vs local-only)
+- Start/stop individual or batch tasks
+- Status monitoring with state change confirmation
+- Error handling for credits, rate limits, etc.
+
+**Safety**: Validates `runOn` property before starting; rejects local-only tasks.
+
+### octoparse-data-export
+
+**Purpose**: Retrieve and process scraped data results.
+
+**Modes**:
+- **Incremental** (`getAll: false`) - Get only new/unexported records
+- **Full Snapshot** (`getAll: true`) - Get all unexported data with pagination
+
+**Best Practice**: Always check data volume before large exports; warn user if >10,000 records.
+
+### octoparse-link-template
+
+**Purpose**: Design template chains for complex data workflows.
+
+**Use Cases**:
+- Link listing templates to detail templates
+- Enrich data across multiple sources (product + reviews + contact)
+- Build multi-step scraping pipelines
+
+**Reference**: Includes linking rules and stable template catalog in `references/`.
+
+## MCP Server Configuration
+
+All skills use the Octoparse MCP server:
+
+```json
+{
+  "mcpServers": {
+    "octoparse": {
+      "url": "https://mcp.octoparse.com"
+    }
+  }
+}
+```
+
+**Authorization**: OAuth 2.1 with Dynamic Client Registration (handled automatically by `octoparse-mcp-setup`).
 
 ## Project Structure
 
 ```
 agent-skills/
-├── skills/              # Generated skill definitions
-│   ├── crawl_page/      # Web crawling (from mcp_to_skills)
-│   ├── octoparse_*/     # Octoparse MCP tools (16 skills)
-│   └── ...
-├── generator/            # MCP → Skills converters
-│   ├── mcp_to_skills.py   # From JSON-RPC (live MCP server)
-│   ├── mcps_to_skills.py  # From local mcps JSON files
-│   └── validate_skills.py # Validate against agentskills.io spec
-├── docs/
-│   ├── SPEC_COMPARISON.md # Spec compliance comparison
-│   └── MULTI_REGION.md    # Multi-region endpoint config
-├── mcp/
-│   └── server.json       # MCP Registry format (multi-region)
-├── registry/             # Skills index
-│   └── skills.json
-├── sdk/                  # Python SDK for loading skills
-│   ├── __init__.py
-│   └── loader.py
-├── examples/             # Usage examples
-│   ├── agent_usage.py
-│   ├── run_generator.sh      # For mcp_to_skills (live server)
-│   └── run_mcps_generator.sh  # For mcps_to_skills (local JSON)
-├── requirements.txt
-└── README.md
+├── skills/
+│   ├── octoparse-mcp-setup/          # MCP configuration skill
+│   │   └── SKILL.md
+│   ├── octoparse-template-task/      # Task creation skill
+│   │   └── SKILL.md
+│   ├── octoparse-task-management/    # Task discovery skill
+│   │   └── SKILL.md
+│   ├── octoparse-task-control/       # Task execution skill
+│   │   └── SKILL.md
+│   ├── octoparse-data-export/        # Data retrieval skill
+│   │   └── SKILL.md
+│   └── octoparse-link-template/      # Template chaining skill
+│       ├── SKILL.md
+│       └── references/               # Linking rules and template catalog
+│           ├── linking-rules.md
+│           ├── output-inference-rules.md
+│           └── stable-templates.json
+├── LICENSE                           # MIT License
+└── README.md                         # This file
 ```
 
-## Skill Schema Format
+## Specification
 
-```json
-{
-  "name": "crawl_page",
-  "description": "Crawls a web page and returns its HTML content.",
-  "parameters": {
-    "type": "object",
-    "properties": {
-      "url": { "type": "string", "description": "The URL to crawl" }
-    },
-    "required": ["url"]
-  },
-  "invoke": {
-    "type": "http",
-    "endpoint": "https://mcp.octoparse.com"
-  }
-}
-```
+These skills follow the [Agent Skills Specification](https://agentskills.io/specification) format:
 
-## How to Run the Generator
-
-### Prerequisites
-
-- Python 3.9+
-- MCP server running and accessible
-
-### Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### Run the Generator
-
-```bash
-# Default: fetches from https://mcp.octoparse.com
-python generator/mcp_to_skills.py
-
-# Custom MCP server
-python generator/mcp_to_skills.py --mcp-url https://your-mcp-server.com
-
-# With authentication
-python generator/mcp_to_skills.py --mcp-url https://mcp.example.com --auth-token "Bearer YOUR_TOKEN"
-
-# Verbose output
-python generator/mcp_to_skills.py -v
-```
-
-### Environment Variables
-
-| Variable | Description |
-|----------|-------------|
-| `MCP_URL` | MCP server URL (default: https://mcp.octoparse.com) |
-| `MCP_AUTH_TOKEN` | Bearer token for authenticated MCP servers |
-| `MCP_SESSION_ID` | Session ID for stateful MCP servers |
-
-### Using the Shell Script
-
-```bash
-chmod +x examples/run_generator.sh
-./examples/run_generator.sh
-```
-
-### From Local MCP JSON (mcps folder)
-
-If you have MCP tool descriptors as JSON files (e.g. Cursor's mcps folder), use `mcps_to_skills.py`:
-
-```bash
-# Default: reads from ~/.cursor/projects/.../mcps
-python3 generator/mcps_to_skills.py --merge -v
-
-# Custom mcps path
-MCPS_DIR=/path/to/mcps python3 generator/mcps_to_skills.py --merge
-
-# Or use the shell script
-chmod +x examples/run_mcps_generator.sh
-./examples/run_mcps_generator.sh
-
-# Generate spec-compliant names (hyphens instead of underscores)
-python3 generator/mcps_to_skills.py --merge --spec-compliant
-```
-
-### Validate Skills
-
-```bash
-python3 generator/validate_skills.py
-python3 generator/validate_skills.py --strict  # Require agentskills.io name format
-```
-
-| Variable | Description |
-|----------|-------------|
-| `MCPS_DIR` | Path to mcps folder (contains user-octoparse/, user-figma/, etc.) |
-| `OCTOPARSE_MCP_URL` | Octoparse MCP server URL (overrides region) |
-| `OCTOPARSE_MCP_REGION` | Region: `international` (mcp.octoparse.com) or `china` (mcp.bazhuayu.com) |
-
-## How Agents Can Use Skills
-
-### 1. Discover Skills
-
-```python
-from sdk import list_skills
-
-skills = list_skills()
-for s in skills:
-    print(s["name"], s["description"])
-```
-
-### 2. Load a Skill
-
-```python
-from sdk import load_skill
-
-skill = load_skill("octoparse_get_task_scraped_data")
-# Use skill["parameters"] for tool schema
-# Use skill["invoke"]["endpoint"] for MCP server URL
-# Use skill["invoke"]["tool"] for MCP tool name (tools/call params.name)
-```
-
-### 3. Convert to Agent Tool Format
-
-```python
-# OpenAI / Anthropic function calling format
-tool_schema = {
-    "type": "function",
-    "function": {
-        "name": skill["name"],
-        "description": skill["description"],
-        "parameters": skill["parameters"],
-    },
-}
-```
-
-### 4. Invoke via MCP
-
-When the agent decides to call a skill, invoke the MCP server:
-
-```json
-POST {skill.invoke.endpoint}
-{
-  "jsonrpc": "2.0",
-  "id": "1",
-  "method": "tools/call",
-  "params": {
-    "name": "crawl_page",
-    "arguments": { "url": "https://example.com" }
-  }
-}
-```
-
-See `examples/agent_usage.py` for a complete example.
-
-## Example Skills (Included)
-
-### Web Crawling (from mcp_to_skills)
-| Skill | Description |
-|-------|-------------|
-| `crawl_page` | Fetch raw HTML from a URL |
-| `discover_urls` | Extract all links from a page |
-| `extract_structured_data` | Scrape structured data via CSS selectors |
-| `render_page` | Render JS-heavy pages with headless browser |
-
-### Octoparse MCP (from mcps_to_skills)
-| Skill | Description |
-|-------|-------------|
-| `octoparse_search_user_task_list` | Search/filter user's scraping tasks |
-| `octoparse_start_cloud_task_execution` | Start a cloud scraping task |
-| `octoparse_get_task_scraped_data` | Retrieve scraped data from a task |
-| `octoparse_create_task_from_template` | Create task from template |
-| ... | 12 more Octoparse skills |
-
-### Octoparse Workflow Skills
-
-Additional workflow-oriented skills for Claude Code that orchestrate multiple MCP tools:
-
-| Skill | Description | Triggers |
-|-------|-------------|----------|
-| [octoparse-template-task](skills/octoparse-template-task/Skill.md) | Create tasks using pre-defined templates | "create a scraper", "use template" |
-| [octoparse-task-management](skills/octoparse-task-management/Skill.md) | Find tasks, view configuration, organize by groups | "find task", "show my tasks" |
-| [octoparse-task-control](skills/octoparse-task-control/Skill.md) | Start/stop tasks and monitor execution status | "start task", "stop task" |
-| [octoparse-data-export](skills/octoparse-data-export/Skill.md) | Export scraped data with pagination | "get data", "export results" |
+- **SKILL.md** - YAML frontmatter + Markdown instructions
+- **references/** - Optional supplementary documentation
 
 ## License
 
