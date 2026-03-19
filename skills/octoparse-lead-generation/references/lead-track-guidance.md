@@ -63,7 +63,6 @@ Default recommendations:
 
 Typical chains:
 
-- `Google Search Scraper -> Contact Details Scraper`
 - `Google Search Email Finder (Premium)` as a standalone email-focused workflow
 
 ## Common Rules

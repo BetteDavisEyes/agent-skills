@@ -207,7 +207,6 @@ Examples:
 - `Google Maps Scraper`
 - `Google Maps Scraper -> Google Maps Reviews Scraper`
 - `Google Maps Scraper -> Contact Details Scraper`
-- `Google Search Scraper -> Contact Details Scraper`
 - `Google Search Email Finder (Premium)`
 
 ### Why This Fits

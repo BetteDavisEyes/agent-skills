@@ -37,13 +37,6 @@
     },
     {
       "track": "b2b-company-leads",
-      "workflow": "Google Search Scraper -> Contact Details Scraper",
-      "use_when": "The user wants company discovery first, then contact enrichment from discovered websites",
-      "field_mapping": "Detail_URL/Source_URL or normalized company website -> Contact Details Scraper Website URL",
-      "notes": "Use when broad company discovery is more important than email-only targeting."
-    },
-    {
-      "track": "b2b-company-leads",
       "workflow": "Google Search Email Finder (Premium)",
       "use_when": "The user wants a direct email-focused Google Search workflow instead of a separate website enrichment step",
       "field_mapping": "No upstream template required; this template uses the search query directly",
@@ -221,8 +214,7 @@
       "recommended_when": [
         "The user wants broad B2B company discovery from Google Search",
         "The user needs company pages, result URLs, or search-discovered targets",
-        "The user wants the default search-based company-lead template",
-        "The user may later enrich discovered websites with Contact Details Scraper"
+        "The user wants the default search-based company-lead template"
       ],
       "key_inputs": [
         "All these words",
