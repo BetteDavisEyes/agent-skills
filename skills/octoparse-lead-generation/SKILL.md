@@ -34,26 +34,29 @@ This skill supports two internal tracks:
 1. `local-business-leads`
 2. `b2b-company-leads`
 
-Read `references/lead-track-guidance.md` after opening the shortlist.
+Read `references/request-classifier.md` first, then `references/lead-track-guidance.md`.
 
 ## Evidence Priority
 
 Use evidence in this order:
 
-1. `references/lead-template-shortlist.json`
-2. `references/lead-track-guidance.md`
-3. `octoparse-link-template` when a recommendation involves more than one template
-4. template-specific docs in the sibling `templates/` directory, when available
-5. Octoparse MCP template detail tools
-6. official Octoparse template pages
+1. `references/request-classifier.md`
+2. `references/lead-template-shortlist-core.json`
+3. `references/lead-template-shortlist-regional.json` when geography, language, or locale-specific sources matter
+4. `references/lead-track-guidance.md`
+5. `octoparse-link-template` when a recommendation involves more than one template
+6. template-specific docs in the sibling `templates/` directory, when available
+7. Octoparse MCP template detail tools
+8. official Octoparse template pages
 
-Do not search the whole template catalog first unless the shortlist clearly cannot satisfy the request.
+Do not search the whole template catalog first unless the split shortlist clearly cannot satisfy the request.
 
 ## Recommendation Rules
 
 Apply these rules strictly:
 
 - Prefer the curated shortlist over the full lead-generation category.
+- Use the core shortlist by default and widen to the regional shortlist only when the classifier says geography or language materially affects the recommendation.
 - Keep recommendations tight: one primary recommendation, then one or two alternatives only when materially helpful.
 - Do not treat Amazon or generic product-review templates as lead-generation defaults.
 - Do not treat review-only templates as lead-discovery templates.
@@ -92,12 +95,13 @@ Copy this checklist and track progress:
 ```text
 Task Progress:
 - [ ] Step 1: Determine lead track
-- [ ] Step 2: Read the shortlist first
-- [ ] Step 3: Decide output preference
-- [ ] Step 4: Select the best template or chain
-- [ ] Step 5: Validate with template details if needed
-- [ ] Step 6: Create or recommend the task workflow
-- [ ] Step 7: Summarize fields, risks, and next steps
+- [ ] Step 2: Run the request classifier
+- [ ] Step 3: Read the core shortlist first
+- [ ] Step 4: Decide output preference
+- [ ] Step 5: Select the best template or chain
+- [ ] Step 6: Validate with template details if needed
+- [ ] Step 7: Create or recommend the task workflow
+- [ ] Step 8: Summarize fields, risks, and next steps
 ```
 
 ### Step 1: Determine Lead Track
@@ -113,22 +117,33 @@ Classify the request into one of these buckets:
 
 If mixed, state the recommended primary track and explain why.
 
-### Step 2: Read the Shortlist First
+### Step 2: Run the Request Classifier
 
-Open `references/lead-template-shortlist.json`.
+Open `references/request-classifier.md`.
 
-Use it to quickly determine:
+Use it to normalize:
 
-- which track applies
-- which templates are primary defaults
+- lead track
+- whether contact details are actually required
+- source preference
+- whether regional routing is needed
+- whether reviews are actually required
+
+### Step 3: Read the Core Shortlist First
+
+Open `references/lead-template-shortlist.json` as the entry manifest, then load `references/lead-template-shortlist-core.json`.
+
+Use the core shortlist to quickly determine:
+
+- which primary defaults fit the request
 - which templates are discovery templates versus enrichment templates
 - which typical chains are preferred
 - what key inputs and outputs matter
-- which languages are good defaults
+- whether a core template already satisfies the request
 
-Do not start from the full lead-generation category unless the shortlist is clearly insufficient.
+Only load `references/lead-template-shortlist-regional.json` when the classifier indicates that geography, language, or locale-specific sources matter.
 
-### Step 3: Decide Output Preference
+### Step 4: Decide Output Preference
 
 Choose one of:
 
@@ -143,7 +158,7 @@ If execution is requested and one essential detail is missing, ask one concise f
 - desired lead fields
 - result size
 
-### Step 4: Select the Best Template or Chain
+### Step 5: Select the Best Template or Chain
 
 Use the shortest chain that satisfies the user.
 
@@ -158,7 +173,7 @@ If the recommendation involves more than one template:
 - do not rely on similar field names or similar search inputs alone
 - if the relationship is only a paired strategy rather than a true chain, say so explicitly
 
-### Step 5: Validate with Template Details If Needed
+### Step 6: Validate with Template Details If Needed
 
 If the shortlist is not enough, use Octoparse MCP template detail tools to confirm:
 
@@ -169,7 +184,7 @@ If the shortlist is not enough, use Octoparse MCP template detail tools to confi
 
 Use sibling `templates/` docs when available to refine or override high-level assumptions.
 
-### Step 6: Create or Recommend the Task Workflow
+### Step 7: Create or Recommend the Task Workflow
 
 If the user only wants guidance:
 
@@ -187,7 +202,7 @@ If the chain includes website-driven enrichment:
 - prefer `Contact Details Scraper`
 - explain that it accepts website URLs and enriches leads with emails, phones, and other contact fields
 
-### Step 7: Summarize Fields, Risks, and Next Steps
+### Step 8: Summarize Fields, Risks, and Next Steps
 
 Always include:
 

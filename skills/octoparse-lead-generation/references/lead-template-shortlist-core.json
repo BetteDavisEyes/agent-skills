@@ -1,0 +1,314 @@
+{
+  "version": "2026-03-19",
+  "purpose": "Core shortlist for octoparse-lead-generation. Use this file by default before loading regional variants.",
+  "tracks": [
+    "local-business-leads",
+    "b2b-company-leads"
+  ],
+  "typical_chains": [
+    {
+      "track": "local-business-leads",
+      "workflow": "Google Maps Scraper -> Contact Details Scraper",
+      "use_when": "The user wants local business leads plus enriched contact details such as email, phone, or social links",
+      "field_mapping": "Website/Page_URL-derived website -> Contact Details Scraper Website URL",
+      "notes": "Prefer this over Google Maps family variants when the core need is discovery plus contact enrichment."
+    },
+    {
+      "track": "local-business-leads",
+      "workflow": "Google Maps Scraper -> Google Maps Reviews Scraper",
+      "use_when": "The user explicitly wants review text or review-based local business enrichment",
+      "field_mapping": "Google Maps place details URL/Page_URL -> Google Maps Reviews Scraper input",
+      "notes": "Reviews are enrichment, not the first discovery step."
+    },
+    {
+      "track": "local-business-leads",
+      "workflow": "Superpages Scraper -> Contact Details Scraper",
+      "use_when": "The upstream directory result exposes website URLs and the user wants richer contact details",
+      "field_mapping": "Website -> Contact Details Scraper Website URL",
+      "notes": "Use the same pattern for other regional directory templates that produce website URLs."
+    },
+    {
+      "track": "b2b-company-leads",
+      "workflow": "Google Search Email Finder (Premium)",
+      "use_when": "The user wants a direct email-focused Google Search workflow instead of a separate website enrichment step",
+      "field_mapping": "No upstream template required; this template uses the search query directly",
+      "notes": "Do not present this as a default output-to-input chain from Google Search Scraper. It shares search-style inputs but is better treated as a standalone email-focused option."
+    },
+    {
+      "track": "b2b-company-leads",
+      "workflow": "Clutch Scraper (Company Listing)",
+      "use_when": "The user wants B2B company discovery from a company directory, especially for agencies, service providers, or company listing research",
+      "field_mapping": "No upstream template required; this template starts from Clutch listing page URLs",
+      "notes": "Use this as a directory-style B2B discovery option, not as a contact-enrichment template."
+    },
+    {
+      "track": "b2b-company-leads",
+      "workflow": "Social Media Finder",
+      "use_when": "The user wants social profile discovery rather than standard contact extraction",
+      "field_mapping": "No upstream template required; starts from a name or nickname",
+      "notes": "Useful for social-profile style enrichment."
+    }
+  ],
+  "templates": [
+    {
+      "template_id": 1386,
+      "name": "Contact Details Scraper",
+      "slug": "contact-details-scraper",
+      "lead_track": "shared-enrichment",
+      "language": "en/global",
+      "role": "default_contact_enrichment",
+      "recommended_when": [
+        "The upstream template can provide website URLs",
+        "The user wants email, phone, or contact enrichment from business websites",
+        "A default post-discovery enrichment step is needed"
+      ],
+      "key_inputs": [
+        "Website URL",
+        "Maximum Crawl Depth",
+        "Maximum Pages per URL",
+        "Restrict to Same Domain"
+      ],
+      "key_outputs": [
+        "email addresses",
+        "phone numbers",
+        "social media links",
+        "contact details"
+      ],
+      "keep_reason": "default_contact_enrichment_kept"
+    },
+    {
+      "template_id": 1577,
+      "name": "Google Maps Scraper",
+      "slug": "google-maps-advanced-scraper",
+      "lead_track": "local-business-leads",
+      "language": "en/global",
+      "role": "primary_discovery",
+      "recommended_when": [
+        "The user wants local business leads from Google Maps",
+        "The user needs business names, phones, websites, addresses, ratings, or page URLs",
+        "The user wants a default Google Maps lead template without exploring many variants",
+        "The user may later enrich website-based contacts with Contact Details Scraper"
+      ],
+      "key_inputs": [
+        "Search Term (up to 10,000)",
+        "Number of pages (Up to 50)",
+        "Location",
+        "Get Q&As"
+      ],
+      "key_outputs": [
+        "Title",
+        "Review_Count",
+        "Rating",
+        "Address",
+        "Website",
+        "Phone",
+        "Page_URL"
+      ],
+      "keep_reason": "google_maps_primary_kept"
+    },
+    {
+      "template_id": 941,
+      "name": "Google Maps Reviews Scraper",
+      "slug": "google-maps-review-scraper-cloud",
+      "lead_track": "local-business-leads",
+      "language": "en/global",
+      "role": "review_enrichment",
+      "recommended_when": [
+        "The user explicitly wants review text or review-based enrichment",
+        "A Google Maps place details URL is already available or can be obtained first"
+      ],
+      "key_inputs": [
+        "Google Maps Place Details Page URLs (up to 10,000)",
+        "Number of Pages (up to 5,000)"
+      ],
+      "key_outputs": [
+        "name",
+        "Rating",
+        "author_title",
+        "author_review_timestamp",
+        "review_text",
+        "review_img_url"
+      ],
+      "keep_reason": "google_maps_reviews_kept"
+    },
+    {
+      "template_id": 1463,
+      "name": "Superpages Scraper",
+      "slug": "superpages-scraper",
+      "lead_track": "local-business-leads",
+      "language": "en/global",
+      "role": "regional_directory_discovery",
+      "recommended_when": [
+        "The user wants US local-business leads from a directory source instead of Google Maps",
+        "The user wants a stable English directory-based local-business template",
+        "The user may later enrich discovered websites with Contact Details Scraper"
+      ],
+      "key_inputs": [
+        "Keywords (up to 100,000)",
+        "Location"
+      ],
+      "key_outputs": [
+        "Business_name",
+        "Address",
+        "Email",
+        "Telephone",
+        "Website",
+        "Rating",
+        "Review_count"
+      ],
+      "keep_reason": "regional_directory_kept"
+    },
+    {
+      "template_id": 944,
+      "name": "Yellow Pages Scraper (Cloud)",
+      "slug": "yellow-page-scraper-cloud",
+      "lead_track": "local-business-leads",
+      "language": "en/global",
+      "role": "regional_directory_discovery",
+      "recommended_when": [
+        "The user wants directory-based local-business leads in an English/global workflow",
+        "The user is comfortable with company plus zip-code style inputs",
+        "The user may later enrich website-based contacts"
+      ],
+      "key_inputs": [
+        "Company;zip code (with no space between but a semicolon)",
+        "PageSize(The default value is 100)"
+      ],
+      "key_outputs": [
+        "Name",
+        "Location",
+        "Title",
+        "Address",
+        "Phone",
+        "Website",
+        "URL"
+      ],
+      "keep_reason": "regional_directory_kept"
+    },
+    {
+      "template_id": 858,
+      "name": "Clutch Scraper (Company Listing)",
+      "slug": "clutch-scraper-company-listing",
+      "lead_track": "b2b-company-leads",
+      "language": "en",
+      "role": "directory_b2b_discovery",
+      "recommended_when": [
+        "The user wants B2B company discovery from Clutch",
+        "The user is researching agencies, service providers, or company directories",
+        "The user needs company-listing level discovery rather than direct contact enrichment"
+      ],
+      "key_inputs": [
+        "URL (Up to 1000)"
+      ],
+      "key_outputs": [
+        "company name",
+        "rating",
+        "location",
+        "detail URL"
+      ],
+      "keep_reason": "directory_b2b_listing_kept"
+    },
+    {
+      "template_id": 15,
+      "name": "Google Search Scraper",
+      "slug": "google-search-scraper",
+      "lead_track": "b2b-company-leads",
+      "language": "en/global",
+      "role": "primary_discovery",
+      "recommended_when": [
+        "The user wants broad B2B company discovery from Google Search",
+        "The user needs company pages, result URLs, or search-discovered targets",
+        "The user wants the default search-based company-lead template",
+        "The user does not need contact details such as email or phone in the first recommendation"
+      ],
+      "key_inputs": [
+        "All these words",
+        "This exact word or phrase",
+        "Any of these words",
+        "None of these words"
+      ],
+      "key_outputs": [
+        "Title",
+        "Descriptipn",
+        "Detail_URL",
+        "Source_URL",
+        "Displayed_URL",
+        "Position"
+      ],
+      "keep_reason": "google_search_primary_kept"
+    },
+    {
+      "template_id": 2150,
+      "name": "Google Search Email Finder (Premium)",
+      "slug": "google-search-email-finder-premium",
+      "lead_track": "b2b-company-leads",
+      "language": "en/global",
+      "role": "email_focused_discovery",
+      "recommended_when": [
+        "The user wants Google Search based email-focused B2B lead discovery",
+        "The user cares more about finding email-bearing pages than broad result discovery",
+        "The user does not need a strict upstream-to-downstream template chain and can start from the search query directly",
+        "The user explicitly needs contact details such as email or phone"
+      ],
+      "key_inputs": [
+        "All these words",
+        "This exact word or phrase",
+        "Any of these words",
+        "None of these words"
+      ],
+      "key_outputs": [
+        "Title",
+        "Descriptipn",
+        "Detail_URL",
+        "Source_URL",
+        "Displayed_URL",
+        "Position"
+      ],
+      "keep_reason": "google_search_email_primary_kept"
+    },
+    {
+      "template_id": 1576,
+      "name": "Google Maps Email Finder",
+      "slug": "google-maps-contact-scraper",
+      "lead_track": "local-business-leads",
+      "language": "global",
+      "role": "contact_focused_discovery",
+      "recommended_when": [
+        "The user wants Google Maps local-business leads with direct contact-detail emphasis",
+        "The user wants emails, phones, websites, and social links from a Google Maps driven workflow"
+      ],
+      "key_inputs": [
+        "Search Term",
+        "Number of Pages (1~50)",
+        "Location"
+      ],
+      "key_outputs": [
+        "email",
+        "phone",
+        "website",
+        "social links"
+      ],
+      "keep_reason": "google_maps_contact_focused_kept"
+    },
+    {
+      "template_id": 2075,
+      "name": "Social Media Finder",
+      "slug": "social-media-finder",
+      "lead_track": "b2b-company-leads",
+      "language": "en",
+      "role": "social_profile_discovery",
+      "recommended_when": [
+        "The user wants public social profile discovery from a name or nickname",
+        "The user wants social-profile style lead enrichment rather than website contact extraction"
+      ],
+      "key_inputs": [
+        "single name or nickname"
+      ],
+      "key_outputs": [
+        "profile URLs",
+        "handles"
+      ],
+      "keep_reason": "social_profile_discovery_kept"
+    }
+  ]
+}

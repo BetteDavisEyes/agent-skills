@@ -1,6 +1,13 @@
 # Lead Track Guidance
 
-Use this file after `lead-template-shortlist.json`.
+Use this file after `request-classifier.md` and the split shortlist files.
+
+Read order:
+
+1. `references/request-classifier.md`
+2. `references/lead-template-shortlist-core.json`
+3. `references/lead-template-shortlist-regional.json` only when needed
+4. this guidance file
 
 ## local-business-leads
 
@@ -36,6 +43,12 @@ Default recommendations:
 - `1375 Pagesjaunes Business Info Scraper` for French directory-based local-business discovery
 - `1865 Google Maps advanced Scraper for Japan` for Japan-focused Google Maps discovery
 
+Regional triggers:
+
+- the user explicitly asks for Japan, Germany, France, or another locale with dedicated directory templates
+- the user expects a non-English workflow
+- the user names a source such as Gelbe Seiten, 11880, Itown, PagesJaunes, or HelloAsso
+
 Typical chains:
 
 - `Google Maps Scraper -> Contact Details Scraper`
@@ -69,6 +82,12 @@ Default recommendations:
 - `858 Clutch Scraper (Company Listing)` when the user wants directory-style B2B company discovery, especially for agencies or service providers
 - `1816 Helloasso Association Emails Scraper` when the user wants directory-native email discovery for associations or organizations
 - `2075 Social Media Finder` when the user wants public social profile discovery rather than website contact extraction
+
+Regional triggers:
+
+- the user needs a geography-specific company directory
+- the user wants association or organization contacts from a dedicated local source
+- the core search defaults are too broad for the requested market
 
 Typical chains:
 

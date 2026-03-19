@@ -1,0 +1,53 @@
+{
+  "skill_name": "octoparse-lead-generation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need a list of Chicago dentists from Google Maps with business details, but I do not need email or phone enrichment yet.",
+      "expected_output": "Primary recommendation should stay on the local-business track and favor Google Maps Scraper without unnecessarily adding Contact Details Scraper.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Please help me get New York restaurant leads and also pull their first batch of Google Maps reviews so I can compare them.",
+      "expected_output": "Primary workflow should be Google Maps Scraper -> Google Maps Reviews Scraper, with reviews treated as enrichment rather than discovery.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I want US SaaS companies for outreach, but right now I only need company pages and websites, not emails.",
+      "expected_output": "Request should route to b2b-company-leads and recommend Google Search Scraper as the primary option.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Find me US SaaS company leads with email addresses and phone numbers for outbound sales.",
+      "expected_output": "Request should route to b2b-company-leads and recommend Google Search Email Finder (Premium) instead of Google Search Scraper.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "I already have a CSV of company websites and want to enrich them with contact info like email and phone.",
+      "expected_output": "The skill should recognize a website-only enrichment request and prioritize Contact Details Scraper directly.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "I need German local business leads from a directory source, preferably something more local than Google Maps.",
+      "expected_output": "The skill should turn on regional routing and recommend a Germany-specific directory workflow such as Gelbe Seiten or 11880 rather than only core English/global templates.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "I need Tokyo salon leads and the site is Japanese, so use a Japan-friendly workflow.",
+      "expected_output": "The skill should load regional templates and recommend a Japan-specific option such as Itown or the Japan Google Maps variant.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Find agencies on Clutch for me. I only need discovery and company listing details for now.",
+      "expected_output": "The skill should route to b2b-company-leads and recommend Clutch Scraper (Company Listing) as a directory-style B2B discovery template.",
+      "files": []
+    }
+  ]
+}
