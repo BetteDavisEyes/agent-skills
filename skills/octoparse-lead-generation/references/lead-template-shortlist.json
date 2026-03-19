@@ -49,6 +49,34 @@
       "use_when": "The user wants B2B company discovery from a company directory, especially for agencies, service providers, or company listing research",
       "field_mapping": "No upstream template required; this template starts from Clutch listing page URLs",
       "notes": "Use this as a directory-style B2B discovery option, not as a contact-enrichment template."
+    },
+    {
+      "track": "local-business-leads",
+      "workflow": "Gelbe Seiten Listing Scraper (Cloud by keyword pairs) -> Gelbe Seiten Details Scraper (Cloud by URLs)",
+      "use_when": "The user wants German directory discovery first, then richer business detail enrichment",
+      "field_mapping": "listing/detail URLs -> Gelbe Seiten Details Scraper input",
+      "notes": "A regional directory workflow for Germany."
+    },
+    {
+      "track": "local-business-leads",
+      "workflow": "11880.com Listing Scraper -> 11880.com Detail Scraper",
+      "use_when": "The user wants German directory listing discovery followed by detail enrichment",
+      "field_mapping": "detail URLs -> 11880.com Detail Scraper input",
+      "notes": "Useful for German lead data such as telephone, email, rating, and opening hours."
+    },
+    {
+      "track": "b2b-company-leads",
+      "workflow": "Helloasso Association Emails Scraper",
+      "use_when": "The user wants association email discovery from a directory source",
+      "field_mapping": "No upstream template required; starts from HelloAsso URLs",
+      "notes": "A direct directory-native email workflow."
+    },
+    {
+      "track": "b2b-company-leads",
+      "workflow": "Social Media Finder",
+      "use_when": "The user wants social profile discovery rather than standard contact extraction",
+      "field_mapping": "No upstream template required; starts from a name or nickname",
+      "notes": "Useful for social-profile style enrichment."
     }
   ],
   "templates": [
@@ -292,6 +320,219 @@
         "Position"
       ],
       "keep_reason": "google_search_email_primary_kept"
+    },
+    {
+      "template_id": 1576,
+      "name": "Google Maps Email Finder",
+      "slug": "google-maps-contact-scraper",
+      "lead_track": "local-business-leads",
+      "language": "global",
+      "role": "contact_focused_discovery",
+      "recommended_when": [
+        "The user wants Google Maps local-business leads with direct contact-detail emphasis",
+        "The user wants emails, phones, websites, and social links from a Google Maps driven workflow"
+      ],
+      "key_inputs": [
+        "Search Term",
+        "Number of Pages (1~50)",
+        "Location"
+      ],
+      "key_outputs": [
+        "email",
+        "phone",
+        "website",
+        "social links"
+      ],
+      "keep_reason": "google_maps_contact_focused_kept"
+    },
+    {
+      "template_id": 1865,
+      "name": "Google Maps advanced Scraper for Japan",
+      "slug": "Google-Maps-advanced-Scraper-for-Japan",
+      "lead_track": "local-business-leads",
+      "language": "ja",
+      "role": "regional_maps_discovery",
+      "recommended_when": [
+        "The user wants Japan-focused Google Maps business discovery",
+        "The user needs a richer Google Maps workflow for Japan"
+      ],
+      "key_inputs": [
+        "keywords",
+        "location"
+      ],
+      "key_outputs": [
+        "title",
+        "rating",
+        "address",
+        "website",
+        "phone",
+        "page_url"
+      ],
+      "keep_reason": "regional_maps_japan_kept"
+    },
+    {
+      "template_id": 1682,
+      "name": "Gelbe Seiten Listing Scraper (Cloud by keyword pairs)",
+      "slug": "gelbe-seiten-listing-scraper-cloud",
+      "lead_track": "local-business-leads",
+      "language": "de",
+      "role": "regional_directory_discovery",
+      "recommended_when": [
+        "The user wants German local-business lead discovery from Gelbe Seiten",
+        "The user wants keyword-pair based directory discovery before detail enrichment"
+      ],
+      "key_inputs": [
+        "keyword pairs"
+      ],
+      "key_outputs": [
+        "title",
+        "address",
+        "telephone",
+        "detail_url"
+      ],
+      "keep_reason": "regional_directory_kept"
+    },
+    {
+      "template_id": 1677,
+      "name": "Itown Page Listing scraper",
+      "slug": "itown-store-scraper-cloud-only",
+      "lead_track": "local-business-leads",
+      "language": "ja",
+      "role": "regional_directory_discovery",
+      "recommended_when": [
+        "The user wants Japanese local-business discovery from iTown",
+        "The user can provide the site-specific area and keyword format required by iTown"
+      ],
+      "key_inputs": [
+        "area/station;keyword"
+      ],
+      "key_outputs": [
+        "title",
+        "detail_url"
+      ],
+      "keep_reason": "regional_directory_kept"
+    },
+    {
+      "template_id": 1844,
+      "name": "Itown page details_cloud only",
+      "slug": "Itown-page-details-cloud-only",
+      "lead_track": "local-business-leads",
+      "language": "ja",
+      "role": "regional_directory_detail_enrichment",
+      "recommended_when": [
+        "The user already has iTown detail URLs and wants richer Japanese local-business details"
+      ],
+      "key_inputs": [
+        "detail page URLs"
+      ],
+      "key_outputs": [
+        "title",
+        "address",
+        "phone",
+        "website"
+      ],
+      "keep_reason": "regional_directory_kept"
+    },
+    {
+      "template_id": 1375,
+      "name": "Pagesjaunes Business Info Scraper",
+      "slug": "pagesjaunes-business-info-scraper",
+      "lead_track": "local-business-leads",
+      "language": "fr",
+      "role": "regional_directory_discovery",
+      "recommended_when": [
+        "The user wants French local-business lead discovery from PagesJaunes"
+      ],
+      "key_inputs": [
+        "keyword",
+        "location"
+      ],
+      "key_outputs": [
+        "business name",
+        "telephone",
+        "address"
+      ],
+      "keep_reason": "regional_directory_kept"
+    },
+    {
+      "template_id": 901,
+      "name": "11880.com Listing Scraper",
+      "slug": "11880-com-listing-scraper",
+      "lead_track": "local-business-leads",
+      "language": "de",
+      "role": "regional_directory_discovery",
+      "recommended_when": [
+        "The user wants German lead discovery from 11880.com"
+      ],
+      "key_inputs": [
+        "keyword pairs"
+      ],
+      "key_outputs": [
+        "name",
+        "company url",
+        "telephone"
+      ],
+      "keep_reason": "regional_directory_kept"
+    },
+    {
+      "template_id": 902,
+      "name": "11880.com Detail Scraper",
+      "slug": "11880-com-detail-scraper",
+      "lead_track": "local-business-leads",
+      "language": "de",
+      "role": "regional_directory_detail_enrichment",
+      "recommended_when": [
+        "The user already has 11880.com detail URLs and wants richer German lead details"
+      ],
+      "key_inputs": [
+        "detailed URLs"
+      ],
+      "key_outputs": [
+        "rating",
+        "opening hours",
+        "email",
+        "telephone number"
+      ],
+      "keep_reason": "regional_directory_kept"
+    },
+    {
+      "template_id": 1816,
+      "name": "Helloasso Association Emails Scraper",
+      "slug": "helloasso-association-emails-scraper",
+      "lead_track": "b2b-company-leads",
+      "language": "fr",
+      "role": "directory_email_discovery",
+      "recommended_when": [
+        "The user wants association or organization email discovery from HelloAsso",
+        "The user wants a directory-native email workflow rather than generic search discovery"
+      ],
+      "key_inputs": [
+        "association URLs"
+      ],
+      "key_outputs": [
+        "email"
+      ],
+      "keep_reason": "directory_b2b_email_kept"
+    },
+    {
+      "template_id": 2075,
+      "name": "Social Media Finder",
+      "slug": "social-media-finder",
+      "lead_track": "b2b-company-leads",
+      "language": "en",
+      "role": "social_profile_discovery",
+      "recommended_when": [
+        "The user wants public social profile discovery from a name or nickname",
+        "The user wants social-profile style lead enrichment rather than website contact extraction"
+      ],
+      "key_inputs": [
+        "single name or nickname"
+      ],
+      "key_outputs": [
+        "profile URLs",
+        "handles"
+      ],
+      "keep_reason": "social_profile_discovery_kept"
     }
   ]
 }
