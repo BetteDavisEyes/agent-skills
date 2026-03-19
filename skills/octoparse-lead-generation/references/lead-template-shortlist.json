@@ -42,6 +42,13 @@
       "use_when": "The user wants a direct email-focused Google Search workflow instead of a separate website enrichment step",
       "field_mapping": "No upstream template required; this template uses the search query directly",
       "notes": "Do not present this as a default output-to-input chain from Google Search Scraper. It shares search-style inputs but is better treated as a standalone email-focused option."
+    },
+    {
+      "track": "b2b-company-leads",
+      "workflow": "Clutch Scraper (Company Listing)",
+      "use_when": "The user wants B2B company discovery from a company directory, especially for agencies, service providers, or company listing research",
+      "field_mapping": "No upstream template required; this template starts from Clutch listing page URLs",
+      "notes": "Use this as a directory-style B2B discovery option, not as a contact-enrichment template."
     }
   ],
   "templates": [
@@ -204,6 +211,29 @@
         "Beschreibung"
       ],
       "keep_reason": "regional_directory_kept"
+    },
+    {
+      "template_id": 858,
+      "name": "Clutch Scraper (Company Listing)",
+      "slug": "clutch-scraper-company-listing",
+      "lead_track": "b2b-company-leads",
+      "language": "en",
+      "role": "directory_b2b_discovery",
+      "recommended_when": [
+        "The user wants B2B company discovery from Clutch",
+        "The user is researching agencies, service providers, or company directories",
+        "The user needs company-listing level discovery rather than direct contact enrichment"
+      ],
+      "key_inputs": [
+        "URL (Up to 1000)"
+      ],
+      "key_outputs": [
+        "company name",
+        "rating",
+        "location",
+        "detail URL"
+      ],
+      "keep_reason": "directory_b2b_listing_kept"
     },
     {
       "template_id": 15,

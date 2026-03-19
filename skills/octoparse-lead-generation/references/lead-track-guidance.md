@@ -59,10 +59,12 @@ Default recommendations:
 
 - `15 Google Search Scraper` when the user wants company discovery without contact details
 - `2150 Google Search Email Finder (Premium)` when the user explicitly needs contact details such as email or phone
+- `858 Clutch Scraper (Company Listing)` when the user wants directory-style B2B company discovery, especially for agencies or service providers
 
 Typical chains:
 
 - `Google Search Email Finder (Premium)` as a standalone email-focused workflow
+- `Clutch Scraper (Company Listing)` as a standalone B2B directory-discovery workflow
 
 ## Common Rules
 

@@ -6113,5 +6113,89 @@
     "collection_stages": [
       "detail-page"
     ]
+  },
+  {
+    "template_id": 1386,
+    "name": "Contact Details Scraper",
+    "slug": "contact-details-scraper",
+    "mcp_stable": true,
+    "categories": [
+      "social-media",
+      "lead-generation"
+    ],
+    "input_fields": [
+      {
+        "name": "Website URL",
+        "param_name": "MainKeys",
+        "input_kind": "url_list",
+        "required": true,
+        "placeholder": "Up to 10,000 entries per run, separate by line breaks. For large datasets, consider splitting them into multiple runs.",
+        "remark": "Start from website URLs when collecting emails, phones, and other contact details."
+      },
+      {
+        "name": "Maximum Crawl Depth",
+        "param_name": "Depth",
+        "input_kind": "number",
+        "required": false,
+        "placeholder": "Enter a number from 0 to 5. Defaults to 0 if left blank.",
+        "remark": "Optional crawl depth."
+      },
+      {
+        "name": "Maximum Pages per URL",
+        "param_name": "Total_num",
+        "input_kind": "number",
+        "required": false,
+        "placeholder": "Enter a number from 0 to 1,000. Defaults to 10 if left blank.",
+        "remark": "Optional page limit per website."
+      },
+      {
+        "name": "Restrict to Same Domain",
+        "param_name": "Lock_domain",
+        "input_kind": "boolean",
+        "required": false,
+        "placeholder": null,
+        "remark": "Lock crawling to the same domain when needed."
+      }
+    ],
+    "known_output_fields": [
+      "email",
+      "phone",
+      "social_media_links",
+      "contact_details"
+    ],
+    "record_granularity": "detail-level",
+    "collection_stages": [
+      "website-homepage",
+      "contact-page"
+    ]
+  },
+  {
+    "template_id": 858,
+    "name": "Clutch Scraper (Company Listing)",
+    "slug": "clutch-scraper-company-listing",
+    "mcp_stable": true,
+    "categories": [
+      "directories"
+    ],
+    "input_fields": [
+      {
+        "name": "URL (Up to 1000)",
+        "param_name": "MainKeys",
+        "input_kind": "url_list",
+        "required": true,
+        "placeholder": "https://clutch.co/directory/iphone-application-developers\nhttps://clutch.co/agencies/sem/new-york-state",
+        "remark": "Use Clutch listing page URLs."
+      }
+    ],
+    "known_output_fields": [
+      "company_name",
+      "rating",
+      "location",
+      "detail_url"
+    ],
+    "record_granularity": "listing-level",
+    "collection_stages": [
+      "listing-page"
+    ]
   }
 ]
