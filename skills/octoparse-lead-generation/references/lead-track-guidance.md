@@ -57,9 +57,8 @@ Typical outputs:
 
 Default recommendations:
 
-- `15 Google Search Scraper` for broad discovery
-- `1386 Contact Details Scraper` as the default website-based contact enrichment step
-- `2150 Google Search Email Finder (Premium)` when the request is explicitly email-focused
+- `15 Google Search Scraper` when the user wants company discovery without contact details
+- `2150 Google Search Email Finder (Premium)` when the user explicitly needs contact details such as email or phone
 
 Typical chains:
 
@@ -72,3 +71,4 @@ Typical chains:
 - Do not widen to the full lead-generation category until the shortlist clearly fails.
 - If an upstream template provides a website URL, prefer `Contact Details Scraper` as the default enrichment choice before exploring weaker alternatives.
 - Do not present `Google Search Scraper -> Google Search Email Finder (Premium)` as a default direct chain unless there is explicit evidence of a true output-to-input linkage.
+- For `b2b-company-leads`, use a simple split: no contact details -> `Google Search Scraper`; contact details needed -> `Google Search Email Finder (Premium)`.

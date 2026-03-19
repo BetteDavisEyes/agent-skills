@@ -11,7 +11,8 @@
     "Treat review templates as enrichment, not discovery.",
     "Do not treat product or generic review templates as lead-generation defaults.",
     "For Google Maps, default to template 1577 for discovery and 941 only when reviews are explicitly needed.",
-    "Whenever an upstream template can provide a website URL, prefer Contact Details Scraper as the default enrichment template."
+    "Whenever an upstream template can provide a website URL, prefer Contact Details Scraper as the default enrichment template.",
+    "For b2b-company-leads, prefer Google Search Scraper when contact details are not required, and prefer Google Search Email Finder (Premium) when contact details are required."
   ],
   "typical_chains": [
     {
@@ -214,7 +215,8 @@
       "recommended_when": [
         "The user wants broad B2B company discovery from Google Search",
         "The user needs company pages, result URLs, or search-discovered targets",
-        "The user wants the default search-based company-lead template"
+        "The user wants the default search-based company-lead template",
+        "The user does not need contact details such as email or phone in the first recommendation"
       ],
       "key_inputs": [
         "All these words",
@@ -242,7 +244,8 @@
       "recommended_when": [
         "The user wants Google Search based email-focused B2B lead discovery",
         "The user cares more about finding email-bearing pages than broad result discovery",
-        "The user does not need a strict upstream-to-downstream template chain and can start from the search query directly"
+        "The user does not need a strict upstream-to-downstream template chain and can start from the search query directly",
+        "The user explicitly needs contact details such as email or phone"
       ],
       "key_inputs": [
         "All these words",

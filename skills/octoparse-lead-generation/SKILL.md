@@ -59,6 +59,9 @@ Apply these rules strictly:
 - Do not treat review-only templates as lead-discovery templates.
 - Treat `Contact Details Scraper` as the default contact-enrichment template.
 - Whenever an upstream template can provide a business `website URL`, prefer chaining it into `Contact Details Scraper` for lead enrichment.
+- For `b2b-company-leads`, use a tighter split:
+  - if the user does not need contact details, prefer `Google Search Scraper`
+  - if the user needs contact details such as email or phone, prefer `Google Search Email Finder (Premium)`
 - For Google Maps, prefer `1577 Google Maps Scraper` for discovery and `941 Google Maps Reviews Scraper` only when reviews are explicitly needed.
 - If the user's request is not satisfied by the shortlist, say so clearly and then widen the search using Octoparse MCP tools.
 
@@ -225,6 +228,7 @@ Always mention important caveats, such as:
 - website-based enrichment depends on an upstream website URL field
 - a review template enriches local-business leads but is not a lead source on its own
 - `Google Search Scraper` and `Google Search Email Finder (Premium)` are not a default direct chain just because their search inputs look similar
+- for `b2b-company-leads`, `Google Search Email Finder (Premium)` should replace `Google Search Scraper` when contact details are explicitly required
 - the shortlist is intentionally narrow and may exclude valid but lower-priority variants
 - geography or language may require a regional directory template instead of the default English/global option
 
