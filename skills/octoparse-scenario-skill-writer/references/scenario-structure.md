@@ -52,12 +52,17 @@ Each shortlisted template should usually include:
 - `template_id`
 - `name`
 - `slug`
-- `track`
+- `track` when already known, or enough role/context for the writer skill to infer it
 - `role`
 - `recommended_when`
 - `key_inputs`
 - `key_outputs`
 - `keep_reason`
+
+Important:
+
+- do not require teammates to pre-label `track` if they have already grouped templates by scenario or described each template's role
+- the writer skill should infer `track` when the scenario and template roles make that straightforward
 
 ## Eval asset expectations
 

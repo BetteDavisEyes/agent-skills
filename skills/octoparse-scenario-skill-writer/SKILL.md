@@ -32,6 +32,8 @@ This skill helps produce a scenario skill package with:
 - `evals/trigger-evals.json`
 
 Read `references/scenario-structure.md` when deciding what files the new scenario should include.
+Read `references/input-requirements.md` to determine what the user should provide before generation.
+Read `references/delivery-modes.md` before deciding how far to take implementation and git actions.
 
 ## When not to use this skill
 
@@ -54,9 +56,11 @@ Use sources in this order:
 1. the user's scenario goal and constraints
 2. existing Octoparse scenario skill patterns in this repo
 3. `references/scenario-structure.md`
-4. `references/asset-guidelines.md`
-5. `octoparse-link-template` when the scenario needs multi-template workflow rules
-6. Octoparse MCP tools and official template/category pages, when shortlist design needs source evidence
+4. `references/input-requirements.md`
+5. `references/delivery-modes.md`
+6. `references/asset-guidelines.md`
+7. `octoparse-link-template` when the scenario needs multi-template workflow rules
+8. Octoparse MCP tools and official template/category pages, when shortlist design needs source evidence
 
 ## Workflow
 
@@ -73,7 +77,8 @@ Task Progress:
 - [ ] Step 7: Draft SKILL.md
 - [ ] Step 8: Draft references
 - [ ] Step 9: Draft evals and trigger-evals
-- [ ] Step 10: Check for weight, overlap, and anti-patterns
+- [ ] Step 10: Decide delivery mode and repository actions
+- [ ] Step 11: Check for weight, overlap, and anti-patterns
 ```
 
 ### Step 1: Define the Scenario Boundary
@@ -85,6 +90,22 @@ State clearly:
 - how it differs from a category page, an MCP tool, and a template-task skill
 
 If the scenario is too broad, narrow it before writing anything else.
+
+### Step 1.5: Collect the Input Contract
+
+Before generating files, determine whether the user has provided enough scenario data.
+
+Use `references/input-requirements.md` to classify what is available:
+
+- required inputs
+- strongly recommended inputs
+- optional but useful inputs
+
+If important inputs are missing:
+
+- identify exactly what is missing
+- make the smallest reasonable assumption only when it is low risk
+- otherwise stop at design mode instead of forcing a partial package
 
 ### Step 2: Decide Whether This Is a True Scenario Skill
 
@@ -128,6 +149,8 @@ Typical classifier dimensions:
 
 The classifier should also decide whether a regional shortlist is needed.
 
+Do not require the user to hand-label tracks if the scenario can infer them from template roles or scenario goals.
+
 ### Step 5: Design the Shortlist Strategy
 
 Do not start from the full template catalog.
@@ -143,6 +166,11 @@ Use a core/regional split when:
 - geography changes the recommended source
 - language changes template suitability
 - regional directories materially outperform global defaults
+
+If the user has already provided a curated shortlist:
+
+- use it as the primary source
+- do not widen to the full catalog unless the shortlist is clearly incomplete
 
 ### Step 6: Define Chain-Validation Rules
 
@@ -184,6 +212,34 @@ Read `references/asset-guidelines.md` for the default responsibilities of:
 
 Prefer a small number of files with clear roles over a large number of overlapping files.
 
+### Step 10: Decide Delivery Mode and Repository Actions
+
+Use `references/delivery-modes.md` to choose how far to go.
+
+Supported delivery levels:
+
+- design-only
+- draft-package
+- full-package
+- package-and-commit
+- PR-ready
+
+Only perform repository actions when:
+
+- the repo path is known
+- the target branch is known or can be safely created
+- the user wants files generated in the repo
+- the required scenario inputs are sufficient
+
+If repository actions are allowed, the skill may:
+
+- create files
+- update references
+- run basic validation
+- `git add`
+- `git commit`
+- give push and PR-ready instructions
+
 ### Step 9: Draft Evals and Trigger-Evals
 
 Create:
@@ -207,7 +263,7 @@ Create:
 - near-miss negatives that belong to adjacent skills
 - negative cases for task execution, chain validation, and skill maintenance
 
-### Step 10: Check for Weight, Overlap, and Anti-Patterns
+### Step 11: Check for Weight, Overlap, and Anti-Patterns
 
 Before finishing, check:
 
@@ -239,6 +295,14 @@ When helping the user design a new scenario skill, always provide:
 ### Asset Plan
 - what files will be created
 
+### Input Requirements
+- what the user must still provide
+- what was inferred
+
+### Delivery Mode
+- whether the result stops at design
+- or continues through package generation and git-ready output
+
 ### Risks
 - overlap risks
 - weight risks
@@ -253,6 +317,8 @@ Do not:
 - assume every scenario needs core/regional splitting
 - merge chain validation into the scenario skill when `octoparse-link-template` should do it
 - treat `evals.json` as enough without trigger coverage
+- require perfect template metadata from the user before making any progress
+- require the user to hand-label `track` when the writer can infer it from scenario structure and template roles
 
 ## Success condition
 
@@ -262,4 +328,6 @@ This skill succeeds when the user ends up with a scenario skill package that:
 - has a usable classifier
 - has a defensible shortlist
 - has realistic evals and trigger-evals
+- clearly states what inputs were required from the user
+- can stop at design or continue to git-ready delivery when appropriate
 - stays compact enough for reliable retrieval and maintenance
