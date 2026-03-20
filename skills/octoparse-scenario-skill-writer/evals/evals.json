@@ -1,0 +1,125 @@
+{
+  "skill_name": "octoparse-scenario-skill-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Help me create an Octoparse competitor-monitoring skill for tracking rival product pages, pricing changes, and review signals across a few marketplaces. I want the framework first, not code yet.",
+      "expected_output": "The skill should keep the task in design-only mode, define the scenario boundary, propose internal tracks if needed, and outline the package structure instead of jumping straight into task execution.",
+      "assertions": [
+        "Treats the request as a scenario-skill design problem",
+        "Proposes a scenario boundary rather than template execution",
+        "Stops at design-oriented output instead of creating tasks",
+        "Mentions the expected package structure for the new scenario skill"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I want to build a market-research scenario skill. My teammates can give you a shortlist of templates, a couple of official category pages, and some example user requests. Tell us what files we need and what extra data you still need.",
+      "expected_output": "The skill should act like an internal package generator, list the expected files, explain the input contract, and clearly identify which inputs are required versus strongly recommended.",
+      "assertions": [
+        "Lists the core scenario-skill files to be generated",
+        "Distinguishes required inputs from strongly recommended inputs",
+        "Requests only the missing high-value inputs instead of asking for everything",
+        "Keeps the response focused on package generation rather than template execution"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "We're making an e-commerce-intelligence skill and already have a curated shortlist separated into core and regional templates. Please turn that into a scenario skill package and include the classifier plan.",
+      "expected_output": "The skill should recognize that the scenario is ready for draft-package or full-package work, keep the provided shortlist as the primary source, and design the classifier around the scenario's routing needs.",
+      "assertions": [
+        "Uses the provided shortlist instead of widening to the full catalog first",
+        "Designs a request classifier for the scenario",
+        "Preserves or justifies the existing core/regional split",
+        "Moves toward package generation instead of staying purely conceptual"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Create a social-media-intelligence scenario skill for our team. We only have the scenario goal and a few rough template names, but no stable shortlist yet.",
+      "expected_output": "The skill should recognize missing inputs, avoid forcing a full package, and stay in design-only or draft-package mode while clearly calling out the missing shortlist data.",
+      "assertions": [
+        "Recognizes that the current inputs are incomplete",
+        "Does not pretend a full package can be generated safely",
+        "Calls out the shortlist gap explicitly",
+        "Provides a reasonable next-step plan instead of stalling"
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "We already know this new scenario will recommend multi-template workflows. Please make sure the package explains how to validate real template chains.",
+      "expected_output": "The skill should explicitly delegate chain validation to octoparse-link-template and avoid folding that logic into the scenario writer itself.",
+      "assertions": [
+        "Recognizes that chain validation is needed",
+        "Refers to octoparse-link-template as the chain validator",
+        "Avoids collapsing chain validation into the scenario writer",
+        "Explains the difference between real chains and paired strategies"
+      ],
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "My teammate already grouped the templates by role and wrote what each one is used for, but they did not provide track labels. Build the scenario package anyway.",
+      "expected_output": "The skill should not require manual track labels if they can be inferred from the roles and scenario structure.",
+      "assertions": [
+        "Does not require pre-labeled track fields as a hard blocker",
+        "Infers tracks from roles or scenario context when possible",
+        "Still explains what was inferred",
+        "Keeps moving toward a usable package"
+      ],
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "Please generate a PR-ready package for a competitor-monitoring skill. The repo path and target branch are known, and I'm okay with writing files and committing them.",
+      "expected_output": "The skill should choose a git-capable delivery mode, explain the repository actions it can take, and move toward package-and-commit or PR-ready behavior rather than stopping at design only.",
+      "assertions": [
+        "Selects a delivery mode beyond design-only",
+        "Recognizes that repository actions are permitted",
+        "Includes git-ready or PR-ready expectations",
+        "Does not confuse package generation with task execution"
+      ],
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "I want this writer skill to teach coworkers exactly what spreadsheet columns or JSON fields they should give you before you generate a package.",
+      "expected_output": "The skill should emphasize the input contract and recommend a concrete handoff format rather than only describing abstract workflow steps.",
+      "assertions": [
+        "Explains the input contract clearly",
+        "Suggests a concrete teammate handoff format",
+        "Separates required, recommended, and optional inputs",
+        "Keeps the answer oriented toward internal teammate onboarding"
+      ],
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "We're creating an Octoparse market-research skill and I want evals that test recommendation quality separately from trigger quality.",
+      "expected_output": "The skill should propose both evals.json and trigger-evals.json, with different responsibilities for each.",
+      "assertions": [
+        "Includes both evals.json and trigger-evals.json in the package plan",
+        "Explains the difference between task evals and trigger evals",
+        "Keeps trigger evaluation separate from recommendation evaluation",
+        "Uses realistic scenario-skill testing language"
+      ],
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "I think our new e-commerce-intelligence skill might get too heavy if we cram every template into SKILL.md. Please design the package to stay light.",
+      "expected_output": "The skill should recommend keeping SKILL.md lean, moving bulky detail into references, and using shortlist files instead of stuffing the full catalog into the main skill.",
+      "assertions": [
+        "Prioritizes a lean SKILL.md",
+        "Moves bulky detail into references",
+        "Warns against putting the full catalog into the main skill",
+        "Uses shortlist files as the preferred structure"
+      ],
+      "files": []
+    }
+  ]
+}

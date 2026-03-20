@@ -1,0 +1,82 @@
+[
+  {
+    "group": "positive-scenario-design",
+    "query": "Help me create an Octoparse competitor-monitoring skill for our team. I need the package structure, classifier, and shortlist strategy.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-scenario-design",
+    "query": "We want to turn our market-research workflow into a reusable Octoparse skill. What files should the package include?",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-package-generation",
+    "query": "I already have a curated shortlist and want you to generate a full Octoparse scenario-skill package from it.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-package-generation",
+    "query": "Build a scenario skill for e-commerce intelligence and include evals, trigger-evals, and a request-classifier.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-input-contract",
+    "query": "What data do my teammates need to give you before you can generate an Octoparse scenario skill package?",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-input-contract",
+    "query": "Please make an intake checklist for coworkers so they know what shortlist data and template metadata to hand over for a new Octoparse scenario skill.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-git-ready",
+    "query": "Write the Octoparse scenario skill into our repo, commit it, and leave me with a PR-ready branch.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-git-ready",
+    "query": "I want an internal Octoparse skill writer that can go from curated template inputs all the way to a committed skill package.",
+    "should_trigger": true
+  },
+  {
+    "group": "negative-template-task",
+    "query": "Create an Octoparse task from Yellow Pages Scraper and run it for Chicago plumbers.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-template-task",
+    "query": "How do I fill in the parameters for Google Search Email Finder (Premium)?",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-link-template",
+    "query": "Can Google Maps Scraper feed Contact Details Scraper, and what fields connect them?",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-link-template",
+    "query": "Please validate whether this template output can be used as the input of the next template.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-skill-maintenance",
+    "query": "Review my SKILL.md and improve the description so it triggers more often.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-skill-maintenance",
+    "query": "I already wrote a skill and just want to tighten the prompt wording and test it.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-mcp-setup",
+    "query": "Help me connect Octoparse MCP to my client and finish OAuth.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-generic-research",
+    "query": "Can you explain what competitor monitoring means and brainstorm some ideas for our team?",
+    "should_trigger": false
+  }
+]
