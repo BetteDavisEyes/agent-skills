@@ -1,6 +1,6 @@
 ---
 name: octoparse-link-template
-description: Help users design Octoparse template chains. Use this skill whenever the user asks which Octoparse templates should be linked together, whether one Octoparse template's output can feed another template's input, how to enrich data across listing/detail/review/contact templates, or when a template seems insufficient and the user needs downstream templates. This skill should also be used when the user describes a data goal without knowing template names, or when they know one template but want to know what other templates can extend or enrich its results.
+description: Help users design and validate Octoparse template chains. Use this skill whenever the user asks which Octoparse templates should be linked together, whether one Octoparse template's output can feed another template's input, how to enrich data across listing/detail/review/contact templates, or when a template seems insufficient and the user needs downstream templates. This skill should also be used when the user describes a data goal without knowing template names, when they know one template but want to know what other templates can extend or enrich its results, or when another Octoparse skill is drafting or revising a multi-template workflow and needs chain validation before presenting it.
 ---
 
 # Octoparse Link Template

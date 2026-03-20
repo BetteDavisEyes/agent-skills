@@ -1,0 +1,33 @@
+{
+  "version": "2026-03-19",
+  "purpose": "Entry manifest for octoparse-lead-generation shortlist. Read request-classifier.md first, then load the core shortlist. Load the regional shortlist only when geography, language, or source-specific signals require it.",
+  "tracks": [
+    "local-business-leads",
+    "b2b-company-leads"
+  ],
+  "read_order": [
+    "references/request-classifier.md",
+    "references/lead-template-shortlist-core.json",
+    "references/lead-template-shortlist-regional.json"
+  ],
+  "selection_rules": [
+    "Prefer this shortlist over the full category page.",
+    "Keep recommendations narrow and default to the primary template for each track.",
+    "Treat review templates as enrichment, not discovery.",
+    "Do not treat product or generic review templates as lead-generation defaults.",
+    "For Google Maps, default to template 1577 for discovery and 941 only when reviews are explicitly needed.",
+    "Whenever an upstream template can provide a website URL, prefer Contact Details Scraper as the default enrichment template.",
+    "For b2b-company-leads, prefer Google Search Scraper when contact details are not required, and prefer Google Search Email Finder (Premium) when contact details are required."
+  ],
+  "regional_trigger_signals": [
+    "The user explicitly names a country, region, or city outside the default English/global path",
+    "The user asks for Japan, Germany, France, or other locale-specific directories",
+    "The core shortlist does not satisfy the geography or language requirement",
+    "The user needs a source-specific directory such as Itown, Gelbe Seiten, 11880.com, PagesJaunes, or HelloAsso"
+  ],
+  "files": {
+    "core": "references/lead-template-shortlist-core.json",
+    "regional": "references/lead-template-shortlist-regional.json",
+    "guidance": "references/lead-track-guidance.md"
+  }
+}

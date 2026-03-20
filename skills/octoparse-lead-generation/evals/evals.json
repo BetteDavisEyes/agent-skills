@@ -1,0 +1,173 @@
+{
+  "skill_name": "octoparse-lead-generation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need a list of Chicago dentists from Google Maps with business details, but I do not need email or phone enrichment yet.",
+      "expected_output": "Primary recommendation should stay on the local-business track and favor Google Maps Scraper without unnecessarily adding Contact Details Scraper.",
+      "assertions": [
+        "Routes the request to local-business-leads",
+        "Recognizes that contact details are not required",
+        "Recommends Google Maps Scraper as the primary template",
+        "Does not make Contact Details Scraper the default primary recommendation"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Please help me get New York restaurant leads and also pull their first batch of Google Maps reviews so I can compare them.",
+      "expected_output": "Primary workflow should be Google Maps Scraper -> Google Maps Reviews Scraper, with reviews treated as enrichment rather than discovery.",
+      "assertions": [
+        "Routes the request to local-business-leads",
+        "Recognizes that reviews are explicitly required",
+        "Recommends Google Maps Scraper as the discovery step",
+        "Adds Google Maps Reviews Scraper as enrichment rather than as a standalone lead source"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I want US SaaS companies for outreach, but right now I only need company pages and websites, not emails.",
+      "expected_output": "Request should route to b2b-company-leads and recommend Google Search Scraper as the primary option.",
+      "assertions": [
+        "Routes the request to b2b-company-leads",
+        "Recognizes that contact details are not required",
+        "Recommends Google Search Scraper as the primary template",
+        "Does not make Google Search Email Finder (Premium) the primary recommendation"
+      ],
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Find me US SaaS company leads with email addresses and phone numbers for outbound sales.",
+      "expected_output": "Request should route to b2b-company-leads and recommend Google Search Email Finder (Premium) instead of Google Search Scraper.",
+      "assertions": [
+        "Routes the request to b2b-company-leads",
+        "Recognizes that contact details are required",
+        "Recommends Google Search Email Finder (Premium) as the primary template",
+        "Does not recommend Google Search Scraper as the primary choice"
+      ],
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "I already have a CSV of company websites and want to enrich them with contact info like email and phone.",
+      "expected_output": "The skill should recognize a website-only enrichment request and prioritize Contact Details Scraper directly.",
+      "assertions": [
+        "Recognizes a website-only enrichment workflow",
+        "Identifies that contact details are required",
+        "Recommends Contact Details Scraper directly",
+        "Does not force a discovery template before Contact Details Scraper"
+      ],
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "I need German local business leads from a directory source, preferably something more local than Google Maps.",
+      "expected_output": "The skill should turn on regional routing and recommend a Germany-specific directory workflow such as Gelbe Seiten or 11880 rather than only core English/global templates.",
+      "assertions": [
+        "Routes the request to local-business-leads",
+        "Enables regional routing",
+        "Prefers a Germany-specific directory workflow over only core English/global defaults",
+        "Recommends a regional directory family such as Gelbe Seiten or 11880"
+      ],
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "I need Tokyo salon leads and the site is Japanese, so use a Japan-friendly workflow.",
+      "expected_output": "The skill should load regional templates and recommend a Japan-specific option such as Itown or the Japan Google Maps variant.",
+      "assertions": [
+        "Routes the request to local-business-leads",
+        "Enables regional routing",
+        "Recognizes that a Japan-friendly workflow is required",
+        "Recommends a Japan-specific option such as Itown or the Japan Google Maps variant"
+      ],
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Find agencies on Clutch for me. I only need discovery and company listing details for now.",
+      "expected_output": "The skill should route to b2b-company-leads and recommend Clutch Scraper (Company Listing) as a directory-style B2B discovery template.",
+      "assertions": [
+        "Routes the request to b2b-company-leads",
+        "Recognizes a directory-style B2B discovery workflow",
+        "Recommends Clutch Scraper (Company Listing) as the primary template",
+        "Does not default to Google Search templates when Clutch is explicitly requested"
+      ],
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "Which Octoparse template should I use for Los Angeles salon leads if I just want a recommendation and don't want to run anything yet?",
+      "expected_output": "The skill should prefer quick answer mode and recommend a narrow local-business workflow, most likely Google Maps Scraper, without creating or running a task.",
+      "assertions": [
+        "Selects quick answer mode",
+        "Routes the request to local-business-leads",
+        "Recommends a narrow local-business workflow",
+        "Does not imply task creation or execution as the default outcome"
+      ],
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "Set up an Octoparse task for me to find US SaaS companies with email addresses, but don't run it yet.",
+      "expected_output": "The skill should prefer task setup mode and select Google Search Email Finder (Premium), moving toward task creation without defaulting to execution.",
+      "assertions": [
+        "Selects task setup mode",
+        "Routes the request to b2b-company-leads",
+        "Recognizes that contact details are required",
+        "Recommends Google Search Email Finder (Premium) without defaulting to execution"
+      ],
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "Please run a quick test for Chicago dental clinics and show me a few sample rows so I can confirm the data looks right.",
+      "expected_output": "The skill should prefer run and sample mode, stay on the local-business track, and lean toward a Google Maps based workflow with a short sample-oriented execution path.",
+      "assertions": [
+        "Selects run and sample mode",
+        "Routes the request to local-business-leads",
+        "Recommends a Google Maps based workflow",
+        "Frames the result as sample-oriented verification rather than full export"
+      ],
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "I need an export-ready lead dataset for New York restaurants with enough fields to deliver to my team.",
+      "expected_output": "The skill should prefer export-ready mode, choose a local-business workflow, and describe a run that reaches a ready-for-export or full-retrieval state rather than stopping at recommendation only.",
+      "assertions": [
+        "Selects export-ready mode",
+        "Routes the request to local-business-leads",
+        "Recommends a workflow that can be run to a deliverable state",
+        "Frames the outcome as ready-for-export or full retrieval rather than recommendation only"
+      ],
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "I already have a batch of 11880.com detail URLs and want the enriched German business details from them.",
+      "expected_output": "The skill should enable regional routing and recommend 11880.com Detail Scraper directly instead of a broader discovery template.",
+      "assertions": [
+        "Enables regional routing",
+        "Recognizes that detail URLs are already available",
+        "Recommends 11880.com Detail Scraper directly",
+        "Does not force a broader discovery template first"
+      ],
+      "files": []
+    },
+    {
+      "id": 14,
+      "prompt": "I need French association emails from a directory source, not a general Google Search workflow.",
+      "expected_output": "The skill should route to b2b-company-leads with regional directory logic and recommend Helloasso Association Emails Scraper instead of the default Google Search templates.",
+      "assertions": [
+        "Routes the request to b2b-company-leads",
+        "Enables regional routing",
+        "Recognizes a directory-native email workflow",
+        "Recommends Helloasso Association Emails Scraper instead of the default Google Search templates"
+      ],
+      "files": []
+    }
+  ]
+}

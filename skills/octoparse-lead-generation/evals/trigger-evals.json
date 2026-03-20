@@ -1,0 +1,102 @@
+[
+  {
+    "group": "positive-local-business",
+    "query": "I need New York restaurant leads from Google Maps with names, websites, and ratings.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-local-business",
+    "query": "Can you help me find dentist leads in Chicago and tell me which Octoparse template I should use first?",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-b2b-company",
+    "query": "I want a small outreach list of US SaaS companies, just company pages and websites for now.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-b2b-company",
+    "query": "Find me US SaaS company emails for outbound sales and recommend the right Octoparse workflow.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-shared-enrichment",
+    "query": "I already have website URLs and need the best Octoparse lead-enrichment workflow for email and phone contact details.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-local-business",
+    "query": "Which Octoparse template is best for Japanese salon leads? I think I need something better than the generic Google Maps ones.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-local-business",
+    "query": "I need German local business data from a directory site, not just another maps scraper.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-b2b-company",
+    "query": "Please help me choose between Google Search Scraper and Google Search Email Finder for B2B leads.",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-b2b-company",
+    "query": "I want Clutch company listings for agencies and service providers. Which Octoparse template should I start with?",
+    "should_trigger": true
+  },
+  {
+    "group": "positive-local-business",
+    "query": "Set up an Octoparse lead-generation task for New York restaurants and keep it sample-sized at first.",
+    "should_trigger": true
+  },
+  {
+    "group": "negative-template-task",
+    "query": "How do I configure Google Search Email Finder (Premium) so it finds more US software company emails?",
+    "should_trigger": false
+  },
+  {
+    "group": "positive-b2b-company",
+    "query": "I need France-based association emails from a directory workflow rather than a generic search query.",
+    "should_trigger": true
+  },
+  {
+    "group": "negative-template-task",
+    "query": "Run this Itown template with ???;??? and stop after it gets around 100 records.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-template-task",
+    "query": "Use Google Maps Reviews Scraper on these place URLs and tell me which restaurant has the best reviews.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-template-task",
+    "query": "What does the Contact Details Scraper input field 'Restrict to Same Domain' mean?",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-link-template",
+    "query": "Check whether Google Maps Scraper can feed Google Maps Reviews Scraper and explain the field mapping.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-template-task",
+    "query": "Create an Octoparse task from the Naver Map template using the default keyword and then run it.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-template-task",
+    "query": "I already know I want Yellow Pages Scraper. Please create the task and do not recommend alternatives.",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-skill-maintenance",
+    "query": "Can you review my shortlist JSON and tell me if the core/regional split looks right?",
+    "should_trigger": false
+  },
+  {
+    "group": "negative-skill-maintenance",
+    "query": "I need to update the SKILL.md description so this lead-generation skill triggers more reliably.",
+    "should_trigger": false
+  }
+]
