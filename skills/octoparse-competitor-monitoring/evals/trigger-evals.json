@@ -1,0 +1,74 @@
+[
+  {
+    "id": "trig-cm-001",
+    "group": "positive-brand-mentions",
+    "prompt": "Which Octoparse templates should I use to monitor posts that mention my competitor on Twitter and TikTok?",
+    "should_trigger": true
+  },
+  {
+    "id": "trig-cm-002",
+    "group": "positive-account-monitoring",
+    "prompt": "Help me build a competitor monitoring workflow for YouTube channels and TikTok profiles.",
+    "should_trigger": true
+  },
+  {
+    "id": "trig-cm-003",
+    "group": "positive-comment-monitoring",
+    "prompt": "I need to collect Reddit and Twitter comments for downstream sentiment analysis.",
+    "should_trigger": true
+  },
+  {
+    "id": "trig-cm-004",
+    "group": "positive-secondary-platform",
+    "prompt": "What Octoparse templates should I use to monitor Korean blog mentions of a competitor brand?",
+    "should_trigger": true
+  },
+  {
+    "id": "trig-cm-005",
+    "group": "negative-template-task",
+    "prompt": "Create a task from TikTok Video Details & Comments Scraper with these URLs.",
+    "should_trigger": false
+  },
+  {
+    "id": "trig-cm-006",
+    "group": "negative-link-template",
+    "prompt": "Can Reddit Search Scraper feed Reddit Post & Comments Scraper directly?",
+    "should_trigger": false
+  },
+  {
+    "id": "trig-cm-007",
+    "group": "negative-skill-maintenance",
+    "prompt": "Help me improve the description of my Octoparse scenario skill.",
+    "should_trigger": false
+  },
+  {
+    "id": "trig-cm-008",
+    "group": "negative-generic-research",
+    "prompt": "What should a social media competitor analysis strategy include?",
+    "should_trigger": false
+  },
+  {
+    "id": "trig-cm-009",
+    "group": "positive-full-chain",
+    "prompt": "Help me build an Octoparse workflow to monitor competitor accounts, brand mentions, and comments across social media.",
+    "should_trigger": true
+  },
+  {
+    "id": "trig-cm-010",
+    "group": "positive-all-core-platforms",
+    "prompt": "Which Octoparse templates should I use to monitor competitors across Twitter/X, TikTok, Reddit, and YouTube?",
+    "should_trigger": true
+  },
+  {
+    "id": "trig-cm-011",
+    "group": "positive-multi-track",
+    "prompt": "I need competitor account monitoring and comment collection for TikTok and YouTube.",
+    "should_trigger": true
+  },
+  {
+    "id": "trig-cm-012",
+    "group": "negative-template-docs",
+    "prompt": "Please rewrite the FAQ for my Google Maps Reviews Scraper template page.",
+    "should_trigger": false
+  }
+]

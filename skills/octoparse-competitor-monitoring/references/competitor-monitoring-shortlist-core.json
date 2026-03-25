@@ -1,0 +1,320 @@
+[
+  {
+    "template_id": 288,
+    "name": "Twitter Advanced Search Scraper",
+    "slug": "twitter-scraper-by-keywords",
+    "platform": "twitter-x",
+    "track": "brand-mention-monitoring",
+    "role": "advanced search brand mention discovery",
+    "recommended_when": [
+      "The user wants to monitor posts that mention a competitor brand or keyword on Twitter/X",
+      "The user wants keyword-based or advanced-search discovery before deeper collection"
+    ],
+    "key_inputs": [
+      "brand keyword",
+      "advanced search query"
+    ],
+    "key_outputs": [
+      "tweet or post results",
+      "post URLs"
+    ],
+    "keep_reason": "Primary Twitter/X discovery template for brand mention monitoring."
+  },
+  {
+    "template_id": 1838,
+    "name": "Twitter Advanced Search Comments Scraper",
+    "slug": "twitter-advanced-search-comments-scraper",
+    "platform": "twitter-x",
+    "track": "comment-monitoring",
+    "role": "combined tweet and comments workflow",
+    "recommended_when": [
+      "The user needs both Twitter/X posts and the comments under those posts",
+      "The user wants a combined workflow instead of a separate discovery step and comment step"
+    ],
+    "key_inputs": [
+      "brand keyword",
+      "advanced search query"
+    ],
+    "key_outputs": [
+      "posts",
+      "comments",
+      "replies"
+    ],
+    "keep_reason": "Preferred combined Twitter/X workflow when content and comments are both needed."
+  },
+  {
+    "template_id": 263,
+    "name": "Twitter Scraper (by Account URL)",
+    "slug": "twitter-scraper-by-account-url",
+    "platform": "twitter-x",
+    "track": "competitor-account-monitoring",
+    "role": "account monitoring by profile URL",
+    "recommended_when": [
+      "The user already has Twitter/X profile URLs",
+      "The user wants competitor account monitoring rather than keyword discovery"
+    ],
+    "key_inputs": [
+      "profile URL"
+    ],
+    "key_outputs": [
+      "account posts",
+      "account content URLs"
+    ],
+    "keep_reason": "Best fit when the user already has competitor account URLs."
+  },
+  {
+    "template_id": 208,
+    "name": "Twitter (X) Comments Scraper",
+    "slug": "tweets-comments-scraper-by-search-result-url",
+    "platform": "twitter-x",
+    "track": "comment-monitoring",
+    "role": "comments collection by post URL",
+    "recommended_when": [
+      "The user already has many Twitter/X post URLs",
+      "The user wants replies or comments without a separate discovery stage"
+    ],
+    "key_inputs": [
+      "post URL"
+    ],
+    "key_outputs": [
+      "comments",
+      "replies"
+    ],
+    "keep_reason": "Best direct comments template when post URLs are already known."
+  },
+  {
+    "template_id": 2146,
+    "name": "Twitter People Search Scraper",
+    "slug": "twitter-people-search-scraper",
+    "platform": "twitter-x",
+    "track": "competitor-account-monitoring",
+    "role": "account discovery",
+    "recommended_when": [
+      "The user wants to discover which Twitter/X accounts are worth monitoring",
+      "The user starts from a topic or keyword rather than from known profile URLs"
+    ],
+    "key_inputs": [
+      "keyword"
+    ],
+    "key_outputs": [
+      "accounts",
+      "profile URLs"
+    ],
+    "keep_reason": "Useful discovery step for finding candidate competitor accounts."
+  },
+  {
+    "template_id": 799,
+    "name": "TikTok Search Scraper (No Login Required)",
+    "slug": "tiktok-video-url-scraper",
+    "platform": "tiktok",
+    "track": "brand-mention-monitoring",
+    "role": "search-based video discovery",
+    "recommended_when": [
+      "The user wants TikTok videos mentioning a competitor brand or keyword"
+    ],
+    "key_inputs": [
+      "keyword",
+      "search term"
+    ],
+    "key_outputs": [
+      "video URLs",
+      "video results"
+    ],
+    "keep_reason": "Primary TikTok discovery template for brand mention monitoring."
+  },
+  {
+    "template_id": 2106,
+    "name": "TikTok Profile Scraper",
+    "slug": "tiktok-profile-scraper",
+    "platform": "tiktok",
+    "track": "competitor-account-monitoring",
+    "role": "account monitoring by profile URL",
+    "recommended_when": [
+      "The user already has TikTok profile URLs",
+      "The user wants competitor account monitoring on TikTok"
+    ],
+    "key_inputs": [
+      "profile URL"
+    ],
+    "key_outputs": [
+      "profile data",
+      "video URLs",
+      "account content"
+    ],
+    "keep_reason": "Primary TikTok account monitoring template."
+  },
+  {
+    "template_id": 802,
+    "name": "TikTok Video Details & Comments Scraper",
+    "slug": "tiktok-video-comments-scraper",
+    "platform": "tiktok",
+    "track": "comment-monitoring",
+    "role": "video details and comments collection",
+    "recommended_when": [
+      "The user wants TikTok video comments or replies",
+      "The user wants comment collection for downstream sentiment analysis"
+    ],
+    "key_inputs": [
+      "video URL"
+    ],
+    "key_outputs": [
+      "video details",
+      "comments"
+    ],
+    "keep_reason": "Primary TikTok comments template."
+  },
+  {
+    "template_id": 1996,
+    "name": "TikTok Video Details Scraper",
+    "slug": "tiktok-video-details-scraper",
+    "platform": "tiktok",
+    "track": "brand-mention-monitoring",
+    "role": "content detail enrichment",
+    "recommended_when": [
+      "The user already has TikTok video URLs and needs detail enrichment without comments"
+    ],
+    "key_inputs": [
+      "video URL"
+    ],
+    "key_outputs": [
+      "video details"
+    ],
+    "keep_reason": "Useful TikTok detail-only option when comments are not needed."
+  },
+  {
+    "template_id": 2067,
+    "name": "Reddit Search Scraper",
+    "slug": "reddit-search-scraper",
+    "platform": "reddit",
+    "track": "brand-mention-monitoring",
+    "role": "search-based mention discovery",
+    "recommended_when": [
+      "The user wants Reddit posts mentioning a competitor brand or keyword"
+    ],
+    "key_inputs": [
+      "keyword"
+    ],
+    "key_outputs": [
+      "post URLs",
+      "search results"
+    ],
+    "keep_reason": "Primary Reddit discovery template for mention monitoring."
+  },
+  {
+    "template_id": 2037,
+    "name": "Reddit Subreddit Scraper",
+    "slug": "reddit-subreddit-scraper-by-url",
+    "platform": "reddit",
+    "track": "competitor-account-monitoring",
+    "role": "community monitoring",
+    "recommended_when": [
+      "The user wants to monitor a competitor-related subreddit or community"
+    ],
+    "key_inputs": [
+      "subreddit URL"
+    ],
+    "key_outputs": [
+      "posts",
+      "community content"
+    ],
+    "keep_reason": "Best fit for subreddit-level monitoring."
+  },
+  {
+    "template_id": 1957,
+    "name": "Reddit Post & Comments Scraper",
+    "slug": "reddit-post-comments-scraper",
+    "platform": "reddit",
+    "track": "comment-monitoring",
+    "role": "post and comments collection",
+    "recommended_when": [
+      "The user already has Reddit post URLs",
+      "The user needs comments for downstream sentiment analysis"
+    ],
+    "key_inputs": [
+      "post URL"
+    ],
+    "key_outputs": [
+      "post details",
+      "comments"
+    ],
+    "keep_reason": "Primary Reddit comments template."
+  },
+  {
+    "template_id": 10,
+    "name": "YouTube Video List Scraper",
+    "slug": "youtube-video-list-scraper",
+    "platform": "youtube",
+    "track": "brand-mention-monitoring",
+    "role": "video discovery by keyword",
+    "recommended_when": [
+      "The user wants YouTube videos mentioning a competitor brand or topic"
+    ],
+    "key_inputs": [
+      "keyword"
+    ],
+    "key_outputs": [
+      "video URLs",
+      "video list results"
+    ],
+    "keep_reason": "Primary YouTube discovery template for mention monitoring."
+  },
+  {
+    "template_id": 262,
+    "name": "YouTube Channel Scraper",
+    "slug": "youtube-channel-scraper",
+    "platform": "youtube",
+    "track": "competitor-account-monitoring",
+    "role": "channel monitoring",
+    "recommended_when": [
+      "The user wants to monitor a competitor YouTube channel"
+    ],
+    "key_inputs": [
+      "channel handle",
+      "channel URL"
+    ],
+    "key_outputs": [
+      "videos",
+      "shorts",
+      "channel content"
+    ],
+    "keep_reason": "Primary YouTube account monitoring template."
+  },
+  {
+    "template_id": 265,
+    "name": "YouTube Comments & Replies Scraper",
+    "slug": "youtube-comments-replies-scraper",
+    "platform": "youtube",
+    "track": "comment-monitoring",
+    "role": "comments and replies collection",
+    "recommended_when": [
+      "The user needs YouTube comments or replies for downstream sentiment analysis"
+    ],
+    "key_inputs": [
+      "video URL"
+    ],
+    "key_outputs": [
+      "comments",
+      "replies"
+    ],
+    "keep_reason": "Primary YouTube comments template."
+  },
+  {
+    "template_id": 1440,
+    "name": "YouTube Transcript Scraper",
+    "slug": "youtube-transcripts-scraper",
+    "platform": "youtube",
+    "track": "brand-mention-monitoring",
+    "role": "transcript evidence enrichment",
+    "recommended_when": [
+      "The user wants to verify whether a YouTube video mentions a competitor brand",
+      "The user needs transcript text as supporting evidence"
+    ],
+    "key_inputs": [
+      "video URL"
+    ],
+    "key_outputs": [
+      "transcript text"
+    ],
+    "keep_reason": "Useful enrichment step for mention monitoring."
+  }
+]

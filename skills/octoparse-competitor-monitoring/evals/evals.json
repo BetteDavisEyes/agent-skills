@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cm-001",
+    "prompt": "I want to monitor Twitter posts that mention my competitor brand and collect the comments for downstream sentiment analysis.",
+    "expected_output": "Route to Twitter/X and recommend the combined Twitter Advanced Search Comments Scraper workflow.",
+    "assertions": [
+      "Routes to brand-mention-monitoring or comment-monitoring with Twitter/X as the primary platform",
+      "Recognizes that sentiment analysis is downstream and not a template capability",
+      "Recommends Twitter Advanced Search Comments Scraper as the primary template",
+      "Does not require a separate Twitter Advanced Search Scraper chain first"
+    ],
+    "files": []
+  },
+  {
+    "id": "cm-002",
+    "prompt": "We already have a list of TikTok profile URLs and want to monitor competitor account activity.",
+    "expected_output": "Route to competitor-account-monitoring and recommend TikTok Profile Scraper.",
+    "assertions": [
+      "Routes to competitor-account-monitoring",
+      "Recognizes direct profile URLs are already available",
+      "Recommends TikTok Profile Scraper",
+      "Does not default to a search template"
+    ],
+    "files": []
+  },
+  {
+    "id": "cm-003",
+    "prompt": "Find Reddit posts mentioning Brand X and collect comments from the most relevant threads.",
+    "expected_output": "Recommend Reddit Search Scraper plus Reddit Post & Comments Scraper, with chain validation if presented as a workflow.",
+    "assertions": [
+      "Routes to brand-mention-monitoring with comment-monitoring as part of the workflow",
+      "Uses Reddit as the primary platform",
+      "Recommends Reddit Search Scraper and Reddit Post & Comments Scraper",
+      "Treats sentiment analysis as downstream to collection"
+    ],
+    "files": []
+  },
+  {
+    "id": "cm-004",
+    "prompt": "Monitor a competitor YouTube channel and collect comments from its new videos.",
+    "expected_output": "Recommend YouTube Channel Scraper and YouTube Comments & Replies Scraper.",
+    "assertions": [
+      "Routes to competitor-account-monitoring",
+      "Uses YouTube as the primary platform",
+      "Recommends YouTube Channel Scraper",
+      "Includes YouTube Comments & Replies Scraper when comments are needed"
+    ],
+    "files": []
+  },
+  {
+    "id": "cm-005",
+    "prompt": "We only need Korean blog posts that mention the competitor name.",
+    "expected_output": "Use the secondary shortlist and recommend Naver Blog SERP Scraper.",
+    "assertions": [
+      "Routes to brand-mention-monitoring",
+      "Detects that a secondary regional platform is required",
+      "Recommends Naver Blog SERP Scraper",
+      "Does not default to a core global platform"
+    ],
+    "files": []
+  },
+  {
+    "id": "cm-006",
+    "prompt": "We already have Twitter/X post URLs and only want replies and comments.",
+    "expected_output": "Recommend Twitter (X) Comments Scraper directly.",
+    "assertions": [
+      "Routes to comment-monitoring",
+      "Recognizes direct post URLs are available",
+      "Recommends Twitter (X) Comments Scraper",
+      "Does not recommend discovery templates first"
+    ],
+    "files": []
+  },
+  {
+    "id": "cm-007",
+    "prompt": "I want end-to-end competitor monitoring on Twitter/X: monitor competitor accounts, discover posts that mention the brand, and collect comments for downstream sentiment analysis.",
+    "expected_output": "Support a full-chain recommendation across competitor-account-monitoring, brand-mention-monitoring, and comment-monitoring for Twitter/X.",
+    "assertions": [
+      "Recognizes this as a full-chain request",
+      "Keeps Twitter/X as the primary platform",
+      "Includes account monitoring, mention monitoring, and comment monitoring in the recommendation",
+      "States that sentiment analysis is downstream to collection"
+    ],
+    "files": []
+  },
+  {
+    "id": "cm-008",
+    "prompt": "We need competitor monitoring across all main social media platforms: Twitter/X, TikTok, Reddit, and YouTube.",
+    "expected_output": "Support an all-core-platforms recommendation and organize the answer by platform.",
+    "assertions": [
+      "Recognizes this as an all-core-platforms request",
+      "Covers Twitter/X, TikTok, Reddit, and YouTube",
+      "Organizes recommendations by platform or clearly grouped structure",
+      "Does not collapse everything into one unstructured mixed list"
+    ],
+    "files": []
+  },
+  {
+    "id": "cm-009",
+    "prompt": "We want to monitor competitor-owned YouTube and TikTok accounts, plus collect comments from the most relevant videos afterward.",
+    "expected_output": "Recognize this as a multi-track request rather than a single-track one.",
+    "assertions": [
+      "Routes to multi-track rather than single-track",
+      "Uses competitor-account-monitoring as one part of the answer",
+      "Adds comment-monitoring because comments are explicitly requested",
+      "Keeps the recommendation centered on YouTube and TikTok"
+    ],
+    "files": []
+  },
+  {
+    "id": "cm-010",
+    "prompt": "Find Reddit and YouTube posts that mention Brand X, then collect comments so our AI can analyze complaints and feedback later.",
+    "expected_output": "Recommend brand-mention monitoring plus comment collection, and clearly say the AI analysis happens after collection.",
+    "assertions": [
+      "Uses brand-mention-monitoring as a primary component",
+      "Adds comment-monitoring because comments are needed",
+      "Keeps Reddit and YouTube as the chosen platforms",
+      "Clearly separates data collection from later AI analysis"
+    ],
+    "files": []
+  }
+]

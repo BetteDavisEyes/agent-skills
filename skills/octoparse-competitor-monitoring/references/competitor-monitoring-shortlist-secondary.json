@@ -1,0 +1,110 @@
+[
+  {
+    "template_id": 1640,
+    "name": "Naver Blog SERP Scraper",
+    "slug": "naver-blog-serp-scraper",
+    "platform": "naver-blog",
+    "track": "brand-mention-monitoring",
+    "role": "search-based mention discovery",
+    "recommended_when": [
+      "The user explicitly needs Korean blog results for competitor mention monitoring"
+    ],
+    "key_inputs": [
+      "keyword"
+    ],
+    "key_outputs": [
+      "blog result URLs"
+    ],
+    "keep_reason": "Regional Korean discovery option."
+  },
+  {
+    "template_id": 2144,
+    "name": "Naver Blog Content Scraper",
+    "slug": "naver-blog-content-scraper",
+    "platform": "naver-blog",
+    "track": "brand-mention-monitoring",
+    "role": "content detail enrichment",
+    "recommended_when": [
+      "The user already has Naver Blog content URLs and needs content details"
+    ],
+    "key_inputs": [
+      "content URL"
+    ],
+    "key_outputs": [
+      "blog content"
+    ],
+    "keep_reason": "Regional Korean detail enrichment option."
+  },
+  {
+    "template_id": 1466,
+    "name": "Weibo Post Info Scraper (keywords)",
+    "slug": "weibo-keyword-post-info-scraper",
+    "platform": "weibo",
+    "track": "brand-mention-monitoring",
+    "role": "keyword-based mention discovery",
+    "recommended_when": [
+      "The user explicitly needs Chinese social media mention monitoring on Weibo"
+    ],
+    "key_inputs": [
+      "keyword"
+    ],
+    "key_outputs": [
+      "post results"
+    ],
+    "keep_reason": "Secondary Chinese social platform option."
+  },
+  {
+    "template_id": 1353,
+    "name": "Xiaohongshu Hashtag Page Scraper",
+    "slug": "xiaohongshu-post-listings-scraper",
+    "platform": "xiaohongshu",
+    "track": "brand-mention-monitoring",
+    "role": "hashtag mention discovery",
+    "recommended_when": [
+      "The user explicitly needs Xiaohongshu monitoring and accepts login requirements"
+    ],
+    "key_inputs": [
+      "hashtag"
+    ],
+    "key_outputs": [
+      "post listings"
+    ],
+    "keep_reason": "Secondary Chinese social platform option with login caveat."
+  },
+  {
+    "template_id": 2006,
+    "name": "LinkedIn Company Profile Scraper",
+    "slug": "linkedin-company-scraper",
+    "platform": "linkedin",
+    "track": "competitor-account-monitoring",
+    "role": "company profile monitoring",
+    "recommended_when": [
+      "The user has LinkedIn company profile URLs and wants account-level competitor monitoring"
+    ],
+    "key_inputs": [
+      "company profile URL"
+    ],
+    "key_outputs": [
+      "company profile data"
+    ],
+    "keep_reason": "Secondary business social profile option."
+  },
+  {
+    "template_id": 1464,
+    "name": "Gab Scraper",
+    "slug": "gab-scraper",
+    "platform": "gab",
+    "track": "competitor-account-monitoring",
+    "role": "alternative platform account/content monitoring",
+    "recommended_when": [
+      "The user explicitly needs Gab monitoring"
+    ],
+    "key_inputs": [
+      "account or content target"
+    ],
+    "key_outputs": [
+      "content results"
+    ],
+    "keep_reason": "Secondary alternative-platform option."
+  }
+]
